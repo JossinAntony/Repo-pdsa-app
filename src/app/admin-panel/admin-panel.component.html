@@ -1,1 +1,16 @@
-<p>admin-panel works!</p>
+<button (click)='onRetrieve()'>Retrieve collection</button>
+<table *ngFor="let item of collection">
+  <tr>
+    {{item.pname}};
+  </tr>
+  <tr>
+    {{item.pge}};
+  </tr>
+  <tr>
+    {{item.padhr}};
+  </tr>
+  <tr style="border-bottom:1px solid black">
+      <td colspan="100%"></td>
+    </tr>
+    <tr><td></td></tr>
+</table>
