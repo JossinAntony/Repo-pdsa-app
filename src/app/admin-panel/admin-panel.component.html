@@ -1,5 +1,5 @@
 <button (click)='onRetrieve()'>Retrieve collection</button>
-<table *ngFor="let item of collection">
+<table *ngFor="let item of collection; let i = index">
   <tr>
     {{item.pname}};
   </tr>
@@ -8,6 +8,12 @@
   </tr>
   <tr>
     {{item.padhr}};
+  </tr>
+  <tr >
+    {{item.children[i].cname}};
+  </tr>
+  <tr >
+    {{item.children[i].cge}};
   </tr>
   <tr style="border-bottom:1px solid black">
       <td colspan="100%"></td>
