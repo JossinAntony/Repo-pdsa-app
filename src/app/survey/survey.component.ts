@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { NgForm } from '@angular/forms';
+import { NgForm, FormBuilder } from '@angular/forms';
 import {MatCard} from '@angular/material';
 import { ApiService } from '../api.service';
 import { ChildrenOutletContexts } from '@angular/router';
@@ -12,73 +12,58 @@ import { ChildrenOutletContexts } from '@angular/router';
 })
 export class SurveyComponent implements OnInit {
 
-  constructor(private apiservice: ApiService) { }
+  constructor(private apiservice: ApiService, public fb: FormBuilder) { }
+
+  /*############ Registration Form ############*/
+  // surveyForm = this.fb.group({
+  //   addDynamicElement: this.fb.array([])
+  // });
+
+  surveyForm = this.fb.group({
+    pname: [''],
+    pge: [''],
+    padhr: ['']
+   });
+
+  // Submit Registration Form
+  onSubmit() {
+    alert(JSON.stringify(this.surveyForm.value));
+  }
 
   //children = [{cname: '', cge: ''}];
-  noChild = 0;
-  peopleData = {
-    pname: '',
-    pge: '',
-    padhr: '',
-    children: [
-      {cname: '', cge: ''}
-    ]
-    };
+  // noChild = 0;
+  // peopleData = {
+  //   pname: '',
+  //   pge: '',
+  //   padhr: '',
+  //   children: [
+  //     {cname: '', cge: ''}
+  //   ]
+  //   };
 
 
-
-  json = {};
-  child: {cname: '', cge: ''};
-  child1: {cname: '', cge: ''};
-  children = new Array();
 
   ngOnInit() {
 
   }
 
-  onSubmit(data: NgForm) {
-  console.log(data.value);
-  this.child = {
-    cname: data.value.children[0].cname,
-    cge: data.value.children[0].cge
-  };
+  // onSubmit(data: NgForm) {
+  //   this.apiservice.savePeople(data.value).subscribe(() => {
+  //   alert('Student successfully added into database!');
+  //   });
+  // }
 
-  this.child1 = {
-    cname: data.value.children[1].cname,
-    cge: data.value.children[1].cge
-  };
+  // onAddChild() {
+  //   // const child = {
+  //   //   cname: '',
+  //   //   cge: '',
+  //   //   };
+  //   //this.childAge = this.peopleData.children[0].cname;
+  //   this.peopleData.children.push({
+  //       cname: '',
+  //        cge: '',
+  //        });
+  //        //console.log(this.peopleData.children);
 
-  this.children.push(this.child);
-  this.children.push(this.child1);
-
-  this.json = {
-    pname: data.value.pname,
-    pge: data.value.pge,
-    padhr: data.value.padhr,
-    children: this.children
-  };
-
-
-  this.apiservice.savePeople(this.json).subscribe(() => {
-  alert('Student successfully added into database!');
-  // console.log(this.peopleData);
-  console.log(data.value);
-    }
-    );
-  }
-
-  onAddChild() {
-
-    // const child = {
-    //   cname: '',
-    //   cge: '',
-    //   };
-    //this.childAge = this.peopleData.children[0].cname;
-    this.peopleData.children.push({
-        cname: '',
-         cge: '',
-         });
-         //console.log(this.peopleData.children);
-
-  }
+  // }
 }

@@ -146,17 +146,15 @@
       <h1 class='text-center'>SURVEY FORM</h1>
       <br><br>
       <!-- Form starts -->
-      <form [formGroup]="registrationForm" (ngSubmit)="onSubmit()">
+      <form [formGroup]="surveyForm" (ngSubmit)="onSubmit()">
         <table class="table table-borderless">
           <h2>1. Personal Details:</h2>
           <div class="group-gap">
             <!-- Full name -->
-            <div formGroupName="personalDetails">
+
               <div>
-                <label>
-                  First name
-                </label>
-                <input type="text" class="form-control" formControlName="pname" >
+                <label>Name</label>
+                <input type="text" class="form-control" formControlName="pname">
               </div>
             </div>
             <!-- Age -->
@@ -170,7 +168,7 @@
               <label >Aadhar:</label>
               <input type="text" class="form-control" formControlName="padhr">
             </div>
-          </div>
+
           <!-- Add Children-->
           <!-- <div class="group-gap" formArrayName="addDynamicElement">
             <h5 >Add Children</h5>
