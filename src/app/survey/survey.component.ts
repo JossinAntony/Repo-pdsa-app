@@ -47,15 +47,16 @@ export class SurveyComponent implements OnInit {
       padhr: [''],
       users: this.fb.array([
         this.fb.group({
-          cname: ['']
+          cname: [''],
+          cge: ['']
         })])
      });
   }
 
 
-  get addDynamicElement() {
-    return this.surveyForm.get('addDynamicElement') as FormArray
-  }
+  // get addDynamicElement() {
+  //   return this.surveyForm.get('addDynamicElement') as FormArray
+  // }
 
   // addChildren() {
   //   this.addDynamicElement.push(this.fb.control(''))
@@ -66,7 +67,8 @@ export class SurveyComponent implements OnInit {
     let arraylen = usersArray.length;
 
     let newUsergroup: FormGroup = this.fb.group({
-      cname: ['']
+      cname: [''],
+      cge: ['']
     });
 
     usersArray.insert(arraylen, newUsergroup);
