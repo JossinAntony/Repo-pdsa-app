@@ -4,6 +4,8 @@ import {Routes, RouterModule} from '@angular/router';
 import {HttpClientModule} from '@angular/common/http';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {MatTableModule, MatCardModule, MatFormFieldModule} from '@angular/material';
+import {MatInputModule, MatButtonModule, MatExpansionModule, MatToolbarModule} from '@angular/material';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AppComponent } from './app.component';
 import { SurveyComponent } from './survey/survey.component';
@@ -24,13 +26,15 @@ const appRoutes: Routes = [
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     HttpClientModule,
     FormsModule,
     RouterModule.forRoot(appRoutes),
     MatTableModule,
     MatCardModule,
     MatFormFieldModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatInputModule, MatButtonModule, MatExpansionModule, MatToolbarModule
   ],
   providers: [],
   bootstrap: [AppComponent, NavbarComponent]
