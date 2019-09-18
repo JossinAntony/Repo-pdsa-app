@@ -69,7 +69,7 @@
   -->
 
 
-  <div class="container">
+  <!-- <div class="container">
       <br><br><br>
     <div class="row">
         <div class="col col-12 col-sm-2"></div>
@@ -109,10 +109,6 @@
 
 
                     <tr *ngFor="let data of peopleData.children; let i = index">
-                        <!-- <td><h5 class="text-center">Name:</h5></td>
-                        <td> <input type="text"  name="cname" [(ngModel)] = data.cname> </td>
-                        <td><h5 class="text-center">Age:</h5></td>
-                        <td> <input type="text"  name="cge" [(ngModel)] = data.cge> {{childAge}}</td> -->
                         <td><h5 class="text-center">Name:</h5></td>
                         <td><input    name=children[{{i}}]cname [(ngModel)]="peopleData.children[i].cname"></td>
                         <td><h5 class="text-center">Age:</h5></td>
@@ -138,5 +134,64 @@
         <div class="col col-12 col-sm-2"></div>
     </div>
     </div>
-    <br><br><br>
+    <br><br><br> -->
+
+
+<div class="container">
+  <br><br><br>
+  <div class="row">
+    <div class="col col-12 col-sm-2"></div>
+    <div class="col col-12 col-sm-8 border border-secondary rounded">
+      <br><br><br>
+      <h1 class='text-center'>SURVEY FORM</h1>
+      <br><br>
+      <!-- Form starts -->
+      <form [formGroup]="registrationForm" (ngSubmit)="onSubmit()">
+        <table class="table table-borderless">
+          <h2>1. Personal Details:</h2>
+          <div class="group-gap">
+            <!-- Full name -->
+            <div formGroupName="personalDetails">
+              <div>
+                <label>
+                  First name
+                </label>
+                <input type="text" class="form-control" formControlName="pname" >
+              </div>
+            </div>
+            <!-- Age -->
+            <div>
+              <label>Email</label>
+              <input type="email" class="form-control" formControlName="pge">
+            </div>
+
+            <!-- Aadhar -->
+            <div >
+              <label >Aadhar:</label>
+              <input type="text" class="form-control" formControlName="padhr">
+            </div>
+          </div>
+          <!-- Add Children-->
+          <!-- <div class="group-gap" formArrayName="addDynamicElement">
+            <h5 >Add Children</h5>
+            <div>
+              <button type="button" class="btn btn-sm btn-success mb-3 btn-block" (click)="addChildren()">Add Children</button>
+              <ul class="subjectList">
+                <li *ngFor="let item of addDynamicElement.controls; let i = index">
+                  <input type="text" class="form-control" [formControlName]="i">
+                </li>
+              </ul>
+            </div>
+            Submit Button
+            <button type="submit" class="btn btn-danger btn-lg btn-block">Submit</button>
+          </div> -->
+          <br><br><br>
+          <div class="group-gap">
+            <button type="submit" class="btn btn-success btn-lg btn-block">Submit</button>
+          </div>
+          </table>
+      </form><!-- Form ends -->
+    </div>
+  </div>
+</div>
 
