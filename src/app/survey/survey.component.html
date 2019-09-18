@@ -1,224 +1,153 @@
-<!-- <div class="container">
-  <br><br><br>
-<div class="row">
-    <div class="col col-12 col-sm-2"></div>
-    <div class="col col-12 col-sm-8 border border-secondary rounded">
-        <br><br><br>
-        <h1 class='text-center'>SURVEY FORM</h1>
-        <br><br>
-        <form (ngSubmit)=onSubmit(f) #f="ngForm">
-            <table class="table table-borderless">
-              <h2>1. Personal Details:</h2>
-                <tr>
-                    <td><h5 class="text-center">Name:</h5></td>
-                    <td> <input type="text" class="form-control" name="pname" ngModel> </td>
-                </tr>
-                <tr>
-                    <td><h5 class="text-center">Age:</h5></td>
-                    <td> <input type="text" class="form-control" name="pge" ngModel> </td>
-                </tr>
-                <tr>
-                    <td><h5 class="text-center">Adhar no:</h5></td>
-                    <td> <input type="text" class="form-control" name="padhr" ngModel> </td>
-                </tr>
-                <tr>
-                  <td></td>
-                  <td> <button class="btn btn-info" type="submit" ngSubmit>SUBMIT</button></td>
-                </tr>
-        </table>
-        </form>
-    </div>
-
-    <div class="col col-12 col-sm-2"></div>
-</div>
-</div>
-<br><br><br> -->
-<!-- <tr>
-      <td><h5 class="text-center">Mobile no:</h5></td>
-      <td> <input type="date" class="form-control" name="pmob" ngModel> </td>
-    </tr>
-    <tr>
-      <td><h5 class="text-center">Email Id:</h5></td>
-      <td> <input type="text" class="form-control" name="pmail" ngModel> </td>
-    </tr>
-
-    <tr style="border-bottom:1px solid black">
-      <td colspan="100%"></td>
-    </tr>
-    <tr><td></td></tr>
-    <tr>
-      <td><h5 class="text-center">House name:</h5></td>
-      <td> <input type="text" class="form-control" name="phname" ngModel> </td>
-    </tr>
-    <tr>
-      <td><h5 class="text-center">Ward:</h5></td>
-      <td> <input type="text" class="form-control" name="pward" ngModel> </td>
-    </tr>
-    <tr>
-      <td><h5 class="text-center">Panchayath:</h5></td>
-      <td> <input type="text" class="form-control" name="ppnchyth" ngModel> </td>
-    </tr>
-    <tr>
-      <td><h5 class="text-center">Thaluk:</h5></td>
-      <td> <input type="text" class="form-control" name="pthlk" ngModel> </td>
-    </tr>
-    <tr>
-      <td><h5 class="text-center">District:</h5></td>
-      <td> <input type="text" class="form-control" name="pdstrct" ngModel> </td>
-    </tr>
-  -->
-
-
-  <!-- <div class="container">
-      <br><br><br>
-    <div class="row">
-        <div class="col col-12 col-sm-2"></div>
-        <div class="col col-12 col-sm-8 border border-secondary rounded">
-            <br><br><br>
-            <h1 class='text-center'>SURVEY FORM</h1>
-            <br><br>
-            <form #f="ngForm">
-                <table class="table table-borderless">
-                  <tr>
-                    <td colspan="100%">
-                      <h2>1. Personal Details:</h2>
-                    </td>
-                  </tr>
-
-                  <tr>
-                      <td><h5 class="text-center">Name:</h5></td>
-                      <td> <input type="text" class="form-control" name="pname" [(ngModel)] = "peopleData.pname"> </td>
-                  </tr>
-                  <tr>
-                      <td><h5 class="text-center">Age:</h5></td>
-                      <td> <input type="text" class="form-control" name="pge" [(ngModel)] = "peopleData.pge"> </td>
-                  </tr>
-                  <tr>
-                      <td><h5 class="text-center">Adhar no:</h5></td>
-                      <td> <input type="text" class="form-control" name="padhr" [(ngModel)] = "peopleData.padhr"> </td>
-                  </tr>
-
-                  <tr style="border-bottom:1px solid black">
-                      <td colspan="100%"></td>
-                    </tr>
-                    <tr><td></td></tr>
-
-                    <button class="btn btn-info" (click) = "onAddChild()" >Add</button>
-
-
-
-
-                    <tr *ngFor="let data of peopleData.children; let i = index">
-                        <td><h5 class="text-center">Name:</h5></td>
-                        <td><input    name=children[{{i}}]cname [(ngModel)]="peopleData.children[i].cname"></td>
-                        <td><h5 class="text-center">Age:</h5></td>
-                        <td> <input name=children[{{i}}]cge [(ngModel)]="peopleData.children[i].cge"></td>
-                    </tr>
-
-
-
-
-
-                    <tr style="border-bottom:1px solid black">
-                      <td colspan="100%"></td>
-                    </tr>
-                      <tr><td></td></tr>
-                    <tr>
-                      <td></td>
-                      <td> <button class="btn btn-info" (click) = "onSubmit(f)" >SUBMIT</button></td>
-                    </tr>
-            </table>
-            </form>
-        </div>
-
-        <div class="col col-12 col-sm-2"></div>
-    </div>
-    </div>
-    <br><br><br> -->
-
 <div class="container">
   <br><br><br>
   <div class="row">
     <div class="col col-12 col-sm-2"></div>
-      <div class="col col-12 col-sm-8 border border-secondary rounded">
-        <br><br><br>
-        <h1 class='text-center'>SURVEY FORM</h1>
-        <br><br>
-        <!-- Form starts -->
-        <form [formGroup]="surveyForm" (ngSubmit)="onSubmit()">
-          <table class="table table-borderless">
-            <mat-accordion>
-              <mat-expansion-panel>
-                <mat-expansion-panel-header>
-                  <mat-panel-title>
-                    <h5>Personal Details:</h5>
-                  </mat-panel-title>
-                </mat-expansion-panel-header>
-              <div class="group-gap">
-              <!-- Full name -->
-                <div>
-                  <label>Name</label>
+    <div class="col col-12 col-sm-8 border border-secondary rounded">
+      <br><br><br>
+      <h1 class='text-center'>SURVEY FORM</h1>
+      <br><br>
+      <!-- Form starts -->
+      <form class="form-horizontal" [formGroup]="surveyForm" (ngSubmit)="onSubmit()">
+        <mat-accordion>
+        <!-- Surveyor Details -->
+          <mat-expansion-panel>
+            <mat-expansion-panel-header>
+              <mat-panel-title>
+                <h5>Surveyor:</h5>
+              </mat-panel-title>
+            </mat-expansion-panel-header>
+            <div class="group-gap">
+            <!-- Surveyor name -->
+              <div>
+                <label>Name:</label>
+                <input type="text" class="form-control" formControlName="sname">
+              </div>
+            </div>
+            <!-- Designation -->
+            <div>
+              <label>Designation:</label>
+              <input type="text" class="form-control" formControlName="sdesig">
+            </div>
+            <!-- Date -->
+            <div >
+              <label >Date:</label>
+              <input type="date" class="form-control" formControlName="sdate">
+            </div>
+          </mat-expansion-panel>
+          <br>
+        <!-- Surveyee Details -->
+        <mat-expansion-panel>
+            <mat-expansion-panel-header>
+              <mat-panel-title>
+                <h5>Surveyee Identification:</h5>
+              </mat-panel-title>
+            </mat-expansion-panel-header>
+            <div class="group-gap">
+              <!-- Surveyee name -->
+              <div >
+                  <label>Name:</label>
                   <input type="text" class="form-control" formControlName="pname">
                 </div>
               </div>
               <!-- Age -->
               <div>
-                <label>Email</label>
-                <input type="email" class="form-control" formControlName="pge">
+                <label>Age:</label>
+                <input type="text" class="form-control" formControlName="pge">
               </div>
               <!-- Aadhar -->
-              <div >
-                <label >Aadhar:</label>
+              <div>
+                <label>Aadhar no:</label>
                 <input type="text" class="form-control" formControlName="padhr">
               </div>
-            </mat-expansion-panel>
-          </mat-accordion>
+            <!-- ward -->
+            <div >
+              <label >Ward:</label>
+              <input type="text" class="form-control" formControlName="pward">
+            </div>
+            <!-- Housename -->
+            <div >
+              <label >Housename:</label>
+              <input type="text" class="form-control" formControlName="phname">
+            </div>
+            <!-- Panchayath -->
+            <div >
+                <label >Panchayath:</label>
+                <input type="text" class="form-control" formControlName="ppnchyth">
+              </div>
+            <!-- Thaluk -->
+            <div >
+                <label >Thaluk:</label>
+                <input type="text" class="form-control" formControlName="pthlk">
+              </div>
+            <!-- District -->
+            <div >
+                <label >District:</label>
+                <input type="text" class="form-control" formControlName="pdstrct">
+              </div>
+          </mat-expansion-panel>
           <br>
-          <mat-accordion>
-            <mat-expansion-panel>
-              <mat-expansion-panel-header>
-                <mat-panel-title>
-                  <h5>Children Details</h5>
-                </mat-panel-title>
-              </mat-expansion-panel-header>
-              <!-- Add Children-->
-              <div class="group-gap">
-                <div>
-                  <button type="button" class="btn btn-info mb-3 " (click)="addChildren()">Add Children</button>
-                  <hr>
-                  <ng-container *ngFor="let item of surveyForm.controls['children'].controls; let i = index">
-                    <div [formGroup]="item">
-                      <label>Name</label>
-                      <input type="text" class="form-control" formControlName="cname">
-                      <label>Age</label>
-                      <input type="text" class="form-control" formControlName="cge">
-                      <br>
-                      <button type="button" class="btn btn-info mb-3 " (click)="removeFormControl(i)">remove formGroup</button>
-                      <hr>
-                    </div>
-                  </ng-container>
+        <!-- Surveyee Contact Details -->
+        <mat-expansion-panel>
+            <mat-expansion-panel-header>
+              <mat-panel-title>
+                <h5>Contact Details:</h5>
+              </mat-panel-title>
+            </mat-expansion-panel-header>
+            <div class="group-gap">
+              <!-- Mobile no: -->
+              <div >
+                  <label>Mobile no:</label>
+                  <input type="text" class="form-control" formControlName="pmob">
                 </div>
               </div>
-            </mat-expansion-panel>
-          </mat-accordion>
-          <br>
-          <mat-accordion>
-            <mat-expansion-panel>
-              <mat-expansion-panel-header>
-                <mat-panel-title>
-                  <h5>Submit</h5>
-                </mat-panel-title>
-              </mat-expansion-panel-header>
-              <br><br><br>
-              <div class="group-gap">
-                <button type="submit" class="btn btn-danger btn-lg btn-block">Submit</button>
+              <!-- EmailID -->
+              <div>
+                <label>Email:</label>
+                <input type="text" class="form-control" formControlName="pmail">
               </div>
-              </mat-expansion-panel>
-          </mat-accordion>
-        </table>
+          </mat-expansion-panel>
+          <br>
+          <mat-expansion-panel>
+            <mat-expansion-panel-header>
+              <mat-panel-title>
+                <h5>Children Details</h5>
+              </mat-panel-title>
+            </mat-expansion-panel-header>
+            <!-- Add Children-->
+            <div class="group-gap">
+              <div>
+                <button type="button" class="btn btn-info mb-3 " (click)="addChildren()">Add Children</button>
+                <hr>
+                <ng-container *ngFor="let item of surveyForm.controls['children'].controls; let i = index">
+                  <div [formGroup]="item">
+                    <label>Name</label>
+                    <input type="text" class="form-control" formControlName="cname">
+                    <label>Age</label>
+                    <input type="text" class="form-control" formControlName="cge">
+                    <br>
+                    <button type="button" class="btn btn-info mb-3 " (click)="removeFormControl(i)">remove formGroup</button>
+                    <hr>
+                  </div>
+                </ng-container>
+              </div>
+            </div>
+          </mat-expansion-panel>
+
+      <br>
+
+          <mat-expansion-panel>
+            <mat-expansion-panel-header>
+              <mat-panel-title>
+                <h5>Submit</h5>
+              </mat-panel-title>
+            </mat-expansion-panel-header>
+            <div class="group-gap">
+              <button type="submit" class="btn btn-success btn-lg btn-block">Submit</button>
+            </div>
+            </mat-expansion-panel>
+        </mat-accordion>
       </form>
       <br><br>
     </div>
   </div>
 </div>
-

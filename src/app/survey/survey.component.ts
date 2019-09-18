@@ -21,9 +21,23 @@ export class SurveyComponent implements OnInit {
 
   ngOnInit() {
     this.surveyForm = this.fb.group({
+      sname: [''],
+      sdesig: [''],
+      sdate: [''],
+
       pname: [''],
       pge: [''],
       padhr: [''],
+      phname: [''],
+      pward: [''],
+      ppnchyth: [''],
+      pthlk: [''],
+      pdstrct: [''],
+
+      pmob: [''],
+      pmail: [''],
+
+
       children: this.fb.array([
         this.fb.group({
           cname: [''],
