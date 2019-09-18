@@ -186,7 +186,7 @@
                 <h5 >Add Children</h5>
                 <div>
                   <button type="button" class="btn btn-sm btn-success mb-3 btn-block" (click)="addChildren()">Add Children</button>
-                  <ng-container *ngFor="let item of surveyForm.controls['users'].controls; let i = index">
+                  <ng-container *ngFor="let item of surveyForm.controls['children'].controls; let i = index">
                     <div [formGroup]="item">
                       <label>
                         Name:

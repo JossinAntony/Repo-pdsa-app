@@ -15,7 +15,7 @@ export class SurveyComponent implements OnInit {
   constructor(private apiservice: ApiService, public fb: FormBuilder) { }
 
   public surveyForm: FormGroup;
-  public users: Array<{}>;
+  public children: Array<{}>;
 
 
 
@@ -24,7 +24,7 @@ export class SurveyComponent implements OnInit {
       pname: [''],
       pge: [''],
       padhr: [''],
-      users: this.fb.array([
+      children: this.fb.array([
         this.fb.group({
           cname: [''],
           cge: ['']
@@ -36,31 +36,31 @@ export class SurveyComponent implements OnInit {
 
 
   addChildren() {
-    let usersArray = this.surveyForm.controls.users as FormArray;
-    let arraylen = usersArray.length;
+    let childrenArray = this.surveyForm.controls.children as FormArray;
+    let arraylen = childrenArray.length;
 
-    let newUsergroup: FormGroup = this.fb.group({
+    let newChildrengroup: FormGroup = this.fb.group({
       cname: [''],
       cge: ['']
     });
 
-    usersArray.insert(arraylen, newUsergroup);
+    childrenArray.insert(arraylen, newChildrengroup);
   }
 
   removeFormControl(i) {
-    let usersArray = this.surveyForm.controls.users as FormArray;
-    usersArray.removeAt(i);
+    let childrenArray = this.surveyForm.controls.children as FormArray;
+    childrenArray.removeAt(i);
   }
 
-  onSubmit() {
-    alert(JSON.stringify(this.surveyForm.value));
-    console.log(this.surveyForm);
-  }
-
-  // onSubmit(data: NgForm) {
-  //   this.apiservice.savePeople(data.value).subscribe(() => {
-  //   alert('Student successfully added into database!');
-  //   });
+  // onSubmit() {
+  //   alert(JSON.stringify(this.surveyForm.value));
+  //   console.log(this.surveyForm);
   // }
+
+  onSubmit(data: NgForm) {
+    this.apiservice.savePeople(this.surveyForm.value).subscribe(() => {
+    alert('Student successfully added into database!');
+    });
+  }
 
 }
