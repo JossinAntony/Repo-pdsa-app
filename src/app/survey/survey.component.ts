@@ -15,28 +15,7 @@ export class SurveyComponent implements OnInit {
   constructor(private apiservice: ApiService, public fb: FormBuilder) { }
 
   public surveyForm: FormGroup;
-  /*############ Registration Form ############*/
-  // surveyForm = this.fb.group({
-  //   addDynamicElement: this.fb.array([])
-  // });
-
-
-
-  // Submit Registration Form
-  onSubmit() {
-    alert(JSON.stringify(this.surveyForm.value));
-  }
-
-  //children = [{cname: '', cge: ''}];
-  // noChild = 0;
-  // peopleData = {
-  //   pname: '',
-  //   pge: '',
-  //   padhr: '',
-  //   children: [
-  //     {cname: '', cge: ''}
-  //   ]
-  //   };
+  public users: Array<{}>;
 
 
 
@@ -51,16 +30,10 @@ export class SurveyComponent implements OnInit {
           cge: ['']
         })])
      });
+    this.removeFormControl(0);
   }
 
 
-  // get addDynamicElement() {
-  //   return this.surveyForm.get('addDynamicElement') as FormArray
-  // }
-
-  // addChildren() {
-  //   this.addDynamicElement.push(this.fb.control(''))
-  // }
 
   addChildren() {
     let usersArray = this.surveyForm.controls.users as FormArray;
@@ -74,7 +47,15 @@ export class SurveyComponent implements OnInit {
     usersArray.insert(arraylen, newUsergroup);
   }
 
+  removeFormControl(i) {
+    let usersArray = this.surveyForm.controls.users as FormArray;
+    usersArray.removeAt(i);
+  }
 
+  onSubmit() {
+    alert(JSON.stringify(this.surveyForm.value));
+    console.log(this.surveyForm);
+  }
 
   // onSubmit(data: NgForm) {
   //   this.apiservice.savePeople(data.value).subscribe(() => {
@@ -82,17 +63,4 @@ export class SurveyComponent implements OnInit {
   //   });
   // }
 
-  // onAddChild() {
-  //   // const child = {
-  //   //   cname: '',
-  //   //   cge: '',
-  //   //   };
-  //   //this.childAge = this.peopleData.children[0].cname;
-  //   this.peopleData.children.push({
-  //       cname: '',
-  //        cge: '',
-  //        });
-  //        //console.log(this.peopleData.children);
-
-  // }
 }

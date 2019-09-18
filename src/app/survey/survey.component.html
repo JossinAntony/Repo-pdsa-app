@@ -179,8 +179,9 @@
                   <input type="text" class="form-control" [formControlName]="i">
                 </li>
               </ul> -->
-              <ng-container *ngFor="let userFormGroup of surveyForm.controls.users.controls; let i = index">
-                  <div [formGroup]="userFormGroup">
+
+              <ng-container *ngFor="let item of surveyForm.controls['users'].controls; let i = index">
+                  <div [formGroup]="item">
                   <label>
                     Name:
                     <input type="text" formControlName="cname">
@@ -189,9 +190,9 @@
                     Age:
                     <input type="text" formControlName="cge">
                   </label>
-                  <!-- <label>
+                  <label>
                     <button (click)="removeFormControl(i)">remove formGroup</button>
-                  </label> -->
+                  </label>
                 </div>
               </ng-container>
             </div>
