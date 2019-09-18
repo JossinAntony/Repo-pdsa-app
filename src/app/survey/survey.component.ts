@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { NgForm, FormBuilder } from '@angular/forms';
+import { NgForm, FormBuilder, FormArray, FormGroup } from '@angular/forms';
 import {MatCard} from '@angular/material';
 import { ApiService } from '../api.service';
 import { ChildrenOutletContexts } from '@angular/router';
@@ -14,16 +14,13 @@ export class SurveyComponent implements OnInit {
 
   constructor(private apiservice: ApiService, public fb: FormBuilder) { }
 
+  public surveyForm: FormGroup;
   /*############ Registration Form ############*/
   // surveyForm = this.fb.group({
   //   addDynamicElement: this.fb.array([])
   // });
 
-  surveyForm = this.fb.group({
-    pname: [''],
-    pge: [''],
-    padhr: ['']
-   });
+
 
   // Submit Registration Form
   onSubmit() {
@@ -44,8 +41,38 @@ export class SurveyComponent implements OnInit {
 
 
   ngOnInit() {
-
+    this.surveyForm = this.fb.group({
+      pname: [''],
+      pge: [''],
+      padhr: [''],
+      users: this.fb.array([
+        this.fb.group({
+          cname: ['']
+        })])
+     });
   }
+
+
+  get addDynamicElement() {
+    return this.surveyForm.get('addDynamicElement') as FormArray
+  }
+
+  // addChildren() {
+  //   this.addDynamicElement.push(this.fb.control(''))
+  // }
+
+  addChildren() {
+    let usersArray = this.surveyForm.controls.users as FormArray;
+    let arraylen = usersArray.length;
+
+    let newUsergroup: FormGroup = this.fb.group({
+      cname: ['']
+    });
+
+    usersArray.insert(arraylen, newUsergroup);
+  }
+
+
 
   // onSubmit(data: NgForm) {
   //   this.apiservice.savePeople(data.value).subscribe(() => {

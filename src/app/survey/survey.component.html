@@ -170,23 +170,34 @@
             </div>
 
           <!-- Add Children-->
-          <!-- <div class="group-gap" formArrayName="addDynamicElement">
+          <div class="group-gap">
             <h5 >Add Children</h5>
             <div>
               <button type="button" class="btn btn-sm btn-success mb-3 btn-block" (click)="addChildren()">Add Children</button>
-              <ul class="subjectList">
+              <!-- <ul class="subjectList">
                 <li *ngFor="let item of addDynamicElement.controls; let i = index">
                   <input type="text" class="form-control" [formControlName]="i">
                 </li>
-              </ul>
+              </ul> -->
+              <ng-container *ngFor="let userFormGroup of surveyForm.controls.users.controls; let i = index">
+                  <div [formGroup]="userFormGroup">
+                  <label>
+                    Name:
+                    <input type="text" formControlName="cname">
+                  </label>
+                  <!-- <label>
+                    <button (click)="removeFormControl(i)">remove formGroup</button>
+                  </label> -->
+                </div>
+              </ng-container>
             </div>
-            Submit Button
+            <!-- Submit Button -->
             <button type="submit" class="btn btn-danger btn-lg btn-block">Submit</button>
-          </div> -->
-          <br><br><br>
+          </div>
+          <!-- <br><br><br>
           <div class="group-gap">
             <button type="submit" class="btn btn-success btn-lg btn-block">Submit</button>
-          </div>
+          </div> -->
           </table>
       </form><!-- Form ends -->
     </div>
