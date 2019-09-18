@@ -183,22 +183,18 @@
               </mat-expansion-panel-header>
               <!-- Add Children-->
               <div class="group-gap">
-                <h5 >Add Children</h5>
                 <div>
-                  <button type="button" class="btn btn-sm btn-success mb-3 btn-block" (click)="addChildren()">Add Children</button>
+                  <button type="button" class="btn btn-info mb-3 " (click)="addChildren()">Add Children</button>
+                  <hr>
                   <ng-container *ngFor="let item of surveyForm.controls['children'].controls; let i = index">
                     <div [formGroup]="item">
-                      <label>
-                        Name:
-                        <input type="text" formControlName="cname">
-                      </label>
-                      <label>
-                        Age:
-                        <input type="text" formControlName="cge">
-                      </label>
-                      <label>
-                        <button (click)="removeFormControl(i)">remove formGroup</button>
-                      </label>
+                      <label>Name</label>
+                      <input type="text" class="form-control" formControlName="cname">
+                      <label>Age</label>
+                      <input type="text" class="form-control" formControlName="cge">
+                      <br>
+                      <button type="button" class="btn btn-info mb-3 " (click)="removeFormControl(i)">remove formGroup</button>
+                      <hr>
                     </div>
                   </ng-container>
                 </div>
