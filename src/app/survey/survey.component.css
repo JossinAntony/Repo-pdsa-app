@@ -19,3 +19,7 @@ label, input {
 input {
   margin-bottom: 10px;
 }
+
+.mat-action-row {
+  place-content: space-between;
+}
