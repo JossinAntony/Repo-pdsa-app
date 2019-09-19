@@ -155,28 +155,56 @@
             </mat-expansion-panel-header>
             <!-- Add Children-->
             <div class="group-gap">
-              <div>
-                <ng-container *ngFor="
+
+              <ng-container *ngFor="
                       let item of surveyForm.controls['casualities'].controls;
                       let i = index
                     ">
-                  <div [formGroup]="item">
 
-                    <label>Status</label>
-                    <select class="custom-select d-block w-100" formControlName="casStatus">
-                      <option value="">Choose...</option>
-                      <option *ngFor="let casStatus of CasualityStatuses" [ngValue]="casStatus">{{casStatus}}</option>
-                    </select>
-                    <br />
+                <div [formGroup]="item">
+                  <div class="container">
+                    <div class="row">
+                      <div class="col col- col-sm-6">
+                        <!-- <label>Status</label>
+                        <select class="custom-select d-block w-100" formControlName="casStatus">
+                          <option id="casStatus" value="">Choose...</option>
+                          <option *ngFor="let casStatus of CasualityStatuses" [ngValue]="casStatus">{{casStatus}}
+                          </option>
+                        </select> -->
 
 
-                    <button type="button" class="btn btn-info mb-3 " (click)="removeCasualityControl(i)">
-                      remove formGroup
-                    </button>
-                    <hr />
+
+                        <mat-form-field>
+                          <mat-label>status</mat-label>
+                          <mat-select [value]="['casStatus']" formControlName="casStatus">
+                            <mat-option>None</mat-option>
+                            <mat-option value="">select</mat-option>
+                            <mat-option value="deceased">Deceased</mat-option>
+                            <mat-option value="injured">Injured</mat-option>
+                            <mat-option value="missing">Missing</mat-option>
+                          </mat-select>
+                        </mat-form-field>
+
+                      </div>
+                      <!-- Relation to casuality -->
+                      <div class="col col- col-sm-6">
+                        <label>Relation to casuality:</label>
+                        <input type="text" class="form-control" formControlName="casRln" />
+                      </div>
+                    </div>
+
                   </div>
-                </ng-container>
-              </div>
+                </div>
+                <br />
+
+                <div class="col col- col-sm-8">
+                  <button mat-button color="warn" (click)="removeCasualityControl(i)">
+                    Remove Entry
+                  </button>
+                  <hr />
+                </div>
+              </ng-container>
+
             </div>
             <mat-action-row>
 

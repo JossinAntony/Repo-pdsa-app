@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 import {Routes, RouterModule} from '@angular/router';
 import {HttpClientModule} from '@angular/common/http';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
-import {MatTableModule, MatCardModule, MatFormFieldModule} from '@angular/material';
+import {MatTableModule, MatCardModule, MatFormFieldModule, MatSelectModule, MatOptionModule} from '@angular/material';
 import {MatInputModule, MatButtonModule, MatExpansionModule, MatToolbarModule} from '@angular/material';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
@@ -34,7 +34,7 @@ const appRoutes: Routes = [
     MatCardModule,
     MatFormFieldModule,
     ReactiveFormsModule,
-    MatInputModule, MatButtonModule, MatExpansionModule, MatToolbarModule
+    MatInputModule, MatButtonModule, MatExpansionModule, MatToolbarModule, MatSelectModule, MatOptionModule
   ],
   providers: [],
   bootstrap: [AppComponent, NavbarComponent]
