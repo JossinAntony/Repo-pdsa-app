@@ -61,6 +61,16 @@ export class SurveyComponent implements OnInit {
           astBldno: ['']
         })]),
 
+      vehicles: this.fb.array([
+        this.fb.group({
+          vhlTyp: [''],
+          vhlStatus: [''],
+          vhlMake: [''],
+          vhlMdl: [''],
+          vhlNo: [''],
+          vhlIns: ['']
+        })]),
+
       children: this.fb.array([
         this.fb.group({
           cname: [''],
@@ -71,6 +81,7 @@ export class SurveyComponent implements OnInit {
      });
     this.removeCasualityControl(0);
     this.removeAssetControl(0);
+    this.removeVehicleControl(0);
     this.removeFormControl(0);
   }
 
@@ -112,6 +123,28 @@ addChildrenAsset() {
 removeAssetControl(i) {
   let assetArray = this.surveyForm.controls.assets as FormArray;
   assetArray.removeAt(i);
+}
+// -------------------------------------------------------------------------------------
+// ---Group Vehicle functions -----------------------------------------------------
+addChildrenVehicle() {
+  let vehicleArray = this.surveyForm.controls.vehicles as FormArray;
+  let arraylen = vehicleArray.length;
+
+  let newVehiclegroup: FormGroup = this.fb.group({
+    vhlTyp: [''],
+    vhlStatus: [''],
+    vhlMake: [''],
+    vhlMdl: [''],
+    vhlNo: [''],
+    vhlIns: ['']
+  });
+
+  vehicleArray.insert(arraylen, newVehiclegroup);
+}
+
+removeVehicleControl(i) {
+  let vehicleArray = this.surveyForm.controls.vehicles as FormArray;
+  vehicleArray.removeAt(i);
 }
 // -------------------------------------------------------------------------------------
 
