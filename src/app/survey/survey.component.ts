@@ -53,6 +53,14 @@ export class SurveyComponent implements OnInit {
           casAge: ['']
         })]),
 
+      assets: this.fb.array([
+        this.fb.group({
+          astTyp: [''],
+          astStatus: [''],
+          astArea: [''],
+          astBldno: ['']
+        })]),
+
       children: this.fb.array([
         this.fb.group({
           cname: [''],
@@ -62,6 +70,7 @@ export class SurveyComponent implements OnInit {
 
      });
     this.removeCasualityControl(0);
+    this.removeAssetControl(0);
     this.removeFormControl(0);
   }
 
@@ -84,7 +93,27 @@ export class SurveyComponent implements OnInit {
     let casualityArray = this.surveyForm.controls.casualities as FormArray;
     casualityArray.removeAt(i);
   }
-// -------------------
+// -------------------------------------------------------------------------------------
+// ---Group Asset functions -----------------------------------------------------
+addChildrenAsset() {
+  let assetArray = this.surveyForm.controls.assets as FormArray;
+  let arraylen = assetArray.length;
+
+  let newAssetgroup: FormGroup = this.fb.group({
+    astTyp: [''],
+    astStatus: [''],
+    astArea: [''],
+    astBldno: ['']
+  });
+
+  assetArray.insert(arraylen, newAssetgroup);
+}
+
+removeAssetControl(i) {
+  let assetArray = this.surveyForm.controls.assets as FormArray;
+  assetArray.removeAt(i);
+}
+// -------------------------------------------------------------------------------------
 
 // ---Group Children functions --------------------------------------------------------
   addChildren() {
