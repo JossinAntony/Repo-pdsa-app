@@ -48,7 +48,9 @@ export class SurveyComponent implements OnInit {
       casualities: this.fb.array([
         this.fb.group({
           casStatus: [''],
-          casRln: ['']
+          casRln: [''],
+          casName: [''],
+          casAge: ['']
         })]),
 
       children: this.fb.array([
@@ -59,8 +61,8 @@ export class SurveyComponent implements OnInit {
 
 
      });
-     this.removeCasualityControl(0);
-     this.removeFormControl(0);
+    this.removeCasualityControl(0);
+    this.removeFormControl(0);
   }
 
 // ---Group Casuality functions -----------------------------------------------------
@@ -70,7 +72,9 @@ export class SurveyComponent implements OnInit {
 
     let newCasualitygroup: FormGroup = this.fb.group({
       casStatus: [''],
-      casRln: ['']
+      casRln: [''],
+      casName: [''],
+      casAge: ['']
     });
 
     casualityArray.insert(arraylen, newCasualitygroup);

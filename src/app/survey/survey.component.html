@@ -15,7 +15,9 @@
               <mat-panel-title>
                 <h5>Surveyor:</h5>
               </mat-panel-title>
-              <mat-panel-description> <em> Please fill in the details of the surveyor here</em></mat-panel-description>
+              <mat-panel-description>
+                <em>
+                  Please enter the details of the surveyor here</em></mat-panel-description>
             </mat-expansion-panel-header>
             <div class="container">
               <div class="row">
@@ -38,10 +40,13 @@
             </div>
 
             <mat-action-row>
-              <button mat-button color="warn" (click)="prevStep()">Previous</button>
-              <button mat-button color="primary" (click)="nextStep()">Next</button>
+              <button mat-button color="warn" (click)="prevStep()">
+                Previous
+              </button>
+              <button mat-button color="primary" (click)="nextStep()">
+                Next
+              </button>
             </mat-action-row>
-
           </mat-expansion-panel>
           <br />
           <!-- Surveyee Details -->
@@ -50,7 +55,10 @@
               <mat-panel-title>
                 <h5>Surveyee:</h5>
               </mat-panel-title>
-              <mat-panel-description> <em> Please fill in the identification details of the surveyee here</em>
+              <mat-panel-description>
+                <em>
+                  Please enter the identification details of the surveyee
+                  here</em>
               </mat-panel-description>
             </mat-expansion-panel-header>
             <div class="group-gap">
@@ -104,10 +112,13 @@
             </div>
 
             <mat-action-row>
-              <button mat-button color="warn" (click)="prevStep()">Previous</button>
-              <button mat-button color="primary" (click)="nextStep()">Next</button>
+              <button mat-button color="warn" (click)="prevStep()">
+                Previous
+              </button>
+              <button mat-button color="primary" (click)="nextStep()">
+                Next
+              </button>
             </mat-action-row>
-
           </mat-expansion-panel>
           <br />
           <!-- Surveyee Contact Details -->
@@ -116,7 +127,9 @@
               <mat-panel-title>
                 <h5>Contact Details:</h5>
               </mat-panel-title>
-              <mat-panel-description> <em> Please fill in the contact details of the surveyee here</em>
+              <mat-panel-description>
+                <em>
+                  Please enter the contact details of the surveyee here</em>
               </mat-panel-description>
             </mat-expansion-panel-header>
             <div class="group-gap">
@@ -136,95 +149,91 @@
               </div>
             </div>
             <mat-action-row>
-              <button mat-button color="warn" (click)="prevStep()">Previous</button>
-              <button mat-button color="primary" (click)="nextStep()">Next</button>
+              <button mat-button color="warn" (click)="prevStep()">
+                Previous
+              </button>
+              <button mat-button color="primary" (click)="nextStep()">
+                Next
+              </button>
             </mat-action-row>
           </mat-expansion-panel>
           <br />
-
-
-
 
           <mat-expansion-panel [expanded]="step === 3" (opened)="setStep(3)">
             <mat-expansion-panel-header>
               <mat-panel-title>
                 <h5>Casualities</h5>
               </mat-panel-title>
-              <mat-panel-description> <em> Please enter the details of casualities if any, here</em>
+              <mat-panel-description>
+                <em> Please enter the details of casualities if any, here</em>
               </mat-panel-description>
             </mat-expansion-panel-header>
             <!-- Add Children-->
             <div class="group-gap">
-
               <ng-container *ngFor="
-                      let item of surveyForm.controls['casualities'].controls;
-                      let i = index
-                    ">
-
+                  let item of surveyForm.controls['casualities'].controls;
+                  let i = index
+                ">
                 <div [formGroup]="item">
                   <div class="container">
                     <div class="row">
                       <div class="col col- col-sm-6">
-                        <!-- <label>Status</label>
-                        <select class="custom-select d-block w-100" formControlName="casStatus">
-                          <option id="casStatus" value="">Choose...</option>
-                          <option *ngFor="let casStatus of CasualityStatuses" [ngValue]="casStatus">{{casStatus}}
-                          </option>
-                        </select> -->
-
-
-
                         <mat-form-field>
                           <mat-label>status</mat-label>
                           <mat-select [value]="['casStatus']" formControlName="casStatus">
-                            <mat-option>None</mat-option>
                             <mat-option value="">select</mat-option>
                             <mat-option value="deceased">Deceased</mat-option>
                             <mat-option value="injured">Injured</mat-option>
                             <mat-option value="missing">Missing</mat-option>
                           </mat-select>
                         </mat-form-field>
-
                       </div>
                       <!-- Relation to casuality -->
                       <div class="col col- col-sm-6">
                         <label>Relation to casuality:</label>
                         <input type="text" class="form-control" formControlName="casRln" />
                       </div>
-                    </div>
+                      <div class="col col- col-sm-8">
+                        <label>Name:</label>
+                        <input type="text" class="form-control" formControlName="casName" />
+                      </div>
+                      <div class="col col- col-sm-4">
+                        <label>Age:</label>
+                        <input type="text" class="form-control" formControlName="casAge" />
+                      </div>
 
+
+                    </div>
                   </div>
                 </div>
                 <br />
 
                 <div class="col col- col-sm-8">
-                  <button mat-button color="warn" (click)="removeCasualityControl(i)">
+                  <button mat-stroked-button color="warn" (click)="removeCasualityControl(i)">
                     Remove Entry
                   </button>
+                </div>
+                <div class="col col- col-sm-12">
                   <hr />
                 </div>
               </ng-container>
-
             </div>
             <mat-action-row>
-
               <button mat-button color="primary" (click)="addChildrenCasuality()">
                 Add Entry
               </button>
 
               <div>
-                <button mat-button color="warn" (click)="prevStep()">Previous</button>
-                <button mat-button color="primary" (click)="nextStep()">Next</button>
+                <button mat-button color="warn" (click)="prevStep()">
+                  Previous
+                </button>
+                <button mat-button color="primary" (click)="nextStep()">
+                  Next
+                </button>
               </div>
             </mat-action-row>
           </mat-expansion-panel>
           <br />
-
-
-
-
-
-
 
           <mat-expansion-panel>
             <mat-expansion-panel-header>
@@ -263,17 +272,17 @@
             Submit
           </button>
           <!-- <mat-expansion-panel>
-            <mat-expansion-panel-header>
-              <mat-panel-title>
-                <h5>Submit</h5>
-              </mat-panel-title>
-            </mat-expansion-panel-header>
-            <div class="group-gap">
-              <button (click)="onSubmit(f)" class="btn btn-success btn-lg btn-block">
-                Submit
-              </button>
-            </div>
-          </mat-expansion-panel> -->
+<mat-expansion-panel-header>
+<mat-panel-title>
+<h5>Submit</h5>
+</mat-panel-title>
+</mat-expansion-panel-header>
+<div class="group-gap">
+<button (click)="onSubmit(f)" class="btn btn-success btn-lg btn-block">
+Submit
+</button>
+</div>
+</mat-expansion-panel> -->
         </mat-accordion>
       </form>
       <br /><br />
