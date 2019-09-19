@@ -19,6 +19,8 @@ export class SurveyComponent implements OnInit {
 
   step = 0;
 
+  CasualityStatuses: any = ['Deceased', 'Injured', 'Missing']
+
 
 
   ngOnInit() {
@@ -40,10 +42,14 @@ export class SurveyComponent implements OnInit {
       pmail: [''],
 
 
+
+
       children: this.fb.array([
         this.fb.group({
           cname: [''],
-          cge: ['']
+          cge: [''],
+          cstatus: [''],
+
         })])
      });
     this.removeFormControl(0);
@@ -57,27 +63,28 @@ export class SurveyComponent implements OnInit {
 
     let newChildrengroup: FormGroup = this.fb.group({
       cname: [''],
-      cge: ['']
+      cge: [''],
+      cstatus: ['']
     });
 
     childrenArray.insert(arraylen, newChildrengroup);
   }
+
+
 
   removeFormControl(i) {
     let childrenArray = this.surveyForm.controls.children as FormArray;
     childrenArray.removeAt(i);
   }
 
-  // onSubmit() {
-  //   alert(JSON.stringify(this.surveyForm.value));
-  //   console.log(this.surveyForm);
-  // }
+
 
   onSubmit(data: NgForm) {
-    this.apiservice.savePeople(this.surveyForm.value).subscribe(() => {
-    alert('Student successfully added into database!');
-    });
-  }
+    // this.apiservice.savePeople(this.surveyForm.value).subscribe(() => {
+    // alert('Student successfully added into database!');
+    console.log(JSON.stringify(this.surveyForm.value));
+    }
+
 
   setStep(index: number) {
     this.step = index;
