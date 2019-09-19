@@ -44,7 +44,6 @@ export class SurveyComponent implements OnInit {
       pmob: [''],
       pmail: [''],
 
-
       casualities: this.fb.array([
         this.fb.group({
           casStatus: [''],
@@ -71,18 +70,12 @@ export class SurveyComponent implements OnInit {
           vhlIns: ['']
         })]),
 
-      children: this.fb.array([
-        this.fb.group({
-          cname: [''],
-          cge: ['']
-        })])
-
-
+        cmnts: ['']
      });
     this.removeCasualityControl(0);
     this.removeAssetControl(0);
     this.removeVehicleControl(0);
-    this.removeFormControl(0);
+    //this.removeFormControl(0);
   }
 
 // ---Group Casuality functions -----------------------------------------------------
@@ -148,25 +141,25 @@ removeVehicleControl(i) {
 }
 // -------------------------------------------------------------------------------------
 
-// ---Group Children functions --------------------------------------------------------
-  addChildren() {
-    let childrenArray = this.surveyForm.controls.children as FormArray;
-    let arraylen = childrenArray.length;
+// // ---Group Children functions --------------------------------------------------------
+//   addChildren() {
+//     let childrenArray = this.surveyForm.controls.children as FormArray;
+//     let arraylen = childrenArray.length;
 
-    let newChildrengroup: FormGroup = this.fb.group({
-      cname: [''],
-      cge: [''],
-      cstatus: ['']
-    });
+//     let newChildrengroup: FormGroup = this.fb.group({
+//       cname: [''],
+//       cge: [''],
+//       cstatus: ['']
+//     });
 
-    childrenArray.insert(arraylen, newChildrengroup);
-  }
+//     childrenArray.insert(arraylen, newChildrengroup);
+//   }
 
-  removeFormControl(i) {
-    let childrenArray = this.surveyForm.controls.children as FormArray;
-    childrenArray.removeAt(i);
-  }
-// ---------------------------------------------------------------------------------------
+//   removeFormControl(i) {
+//     let childrenArray = this.surveyForm.controls.children as FormArray;
+//     childrenArray.removeAt(i);
+//   }
+// // ---------------------------------------------------------------------------------------
 
 
 
