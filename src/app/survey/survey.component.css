@@ -1,0 +1,21 @@
+.surveyFormView .mat-expansion-panel-header-title,
+.surveyFormView .mat-expansion-panel-header-description {
+  flex-basis: 0;
+}
+
+.surveyFormView .mat-expansion-panel-header-description {
+  justify-content: space-between;
+  align-items: center;
+}
+
+mat-form-field {
+  margin-right: 12px;
+}
+
+label, input {
+  display: block;
+}
+
+input {
+  margin-bottom: 10px;
+}

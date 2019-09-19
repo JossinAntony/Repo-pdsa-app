@@ -8,13 +8,14 @@
       <br /><br />
       <!-- Form starts -->
       <form class="form-horizontal" [formGroup]="surveyForm" #f>
-        <mat-accordion>
+        <mat-accordion class="surveyFormView">
           <!-- Surveyor Details -->
           <mat-expansion-panel [expanded]="step === 0" (opened)="setStep(0)">
             <mat-expansion-panel-header>
               <mat-panel-title>
                 <h5>Surveyor:</h5>
               </mat-panel-title>
+              <mat-panel-description> <em> Please fill in the details of the surveyor here</em></mat-panel-description>
             </mat-expansion-panel-header>
             <div class="container">
               <div class="row">
@@ -47,8 +48,9 @@
           <mat-expansion-panel [expanded]="step === 1" (opened)="setStep(1)">
             <mat-expansion-panel-header>
               <mat-panel-title>
-                <h5>Surveyee Identification:</h5>
+                <h5>Surveyee:</h5>
               </mat-panel-title>
+              <mat-panel-description> <em> Please fill in the identification details of the surveyee here</em></mat-panel-description>
             </mat-expansion-panel-header>
             <div class="group-gap">
               <!-- Surveyee name -->
@@ -108,11 +110,12 @@
           </mat-expansion-panel>
           <br />
           <!-- Surveyee Contact Details -->
-          <mat-expansion-panel>
+          <mat-expansion-panel [expanded]="step === 2" (opened)="setStep(2)">
             <mat-expansion-panel-header>
               <mat-panel-title>
                 <h5>Contact Details:</h5>
               </mat-panel-title>
+              <mat-panel-description> <em> Please fill in the contact details of the surveyee here</em></mat-panel-description>
             </mat-expansion-panel-header>
             <div class="group-gap">
               <!-- Mobile no: -->
@@ -130,6 +133,10 @@
                 </div>
               </div>
             </div>
+            <mat-action-row>
+              <button mat-button color="warn" (click)="prevStep()">Previous</button>
+              <button mat-button color="primary" (click)="nextStep()">Next</button>
+            </mat-action-row>
           </mat-expansion-panel>
           <br />
           <mat-expansion-panel>
