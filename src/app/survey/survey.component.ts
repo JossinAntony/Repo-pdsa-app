@@ -42,21 +42,43 @@ export class SurveyComponent implements OnInit {
       pmail: [''],
 
 
-
+      casualities: this.fb.array([
+        this.fb.group({
+          casStatus: ['']
+        })]),
 
       children: this.fb.array([
         this.fb.group({
           cname: [''],
           cge: [''],
           cstatus: [''],
-
         })])
+
+
      });
-    this.removeFormControl(0);
+     this.removeCasualityControl(0);
+     this.removeFormControl(0);
   }
 
+// ---Group Casuality functions -----------------------------------------------------
+  addChildrenCasuality() {
+    let casualityArray = this.surveyForm.controls.casualities as FormArray;
+    let arraylen = casualityArray.length;
 
+    let newCasualitygroup: FormGroup = this.fb.group({
+      casStatus: ['']
+    });
 
+    casualityArray.insert(arraylen, newCasualitygroup);
+  }
+
+  removeCasualityControl(i) {
+    let casualityArray = this.surveyForm.controls.casualities as FormArray;
+    casualityArray.removeAt(i);
+  }
+// -------------------
+
+// ---Group Children functions --------------------------------------------------------
   addChildren() {
     let childrenArray = this.surveyForm.controls.children as FormArray;
     let arraylen = childrenArray.length;
@@ -70,14 +92,17 @@ export class SurveyComponent implements OnInit {
     childrenArray.insert(arraylen, newChildrengroup);
   }
 
-
-
   removeFormControl(i) {
     let childrenArray = this.surveyForm.controls.children as FormArray;
     childrenArray.removeAt(i);
   }
+// ---------------------------------------------------------------------------------------
 
 
+
+
+
+// --- Submit function--------------------------------------------------------------------
 
   onSubmit(data: NgForm) {
     // this.apiservice.savePeople(this.surveyForm.value).subscribe(() => {
@@ -85,7 +110,8 @@ export class SurveyComponent implements OnInit {
     console.log(JSON.stringify(this.surveyForm.value));
     }
 
-
+// ---------------------------------------------------------------------------------------
+// --- Mat expansion panel navigation functions----
   setStep(index: number) {
     this.step = index;
   }
@@ -97,5 +123,6 @@ export class SurveyComponent implements OnInit {
   prevStep() {
     this.step--;
   }
+// -----------------------------------------------------------------------------------------
 
 }

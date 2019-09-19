@@ -156,29 +156,21 @@
             <!-- Add Children-->
             <div class="group-gap">
               <div>
-
-
                 <ng-container *ngFor="
-                      let item of surveyForm.controls['children'].controls;
+                      let item of surveyForm.controls['casualities'].controls;
                       let i = index
                     ">
                   <div [formGroup]="item">
-                    <!-- Status of casuality-->
+
                     <label>Status</label>
-                    <select class="custom-select d-block w-100" formControlName="cstatus">
+                    <select class="custom-select d-block w-100" formControlName="casStatus">
                       <option value="">Choose...</option>
-                      <option *ngFor="let cstatus of CasualityStatuses" [ngValue]="cstatus">{{cstatus}}</option>
+                      <option *ngFor="let casStatus of CasualityStatuses" [ngValue]="casStatus">{{casStatus}}</option>
                     </select>
-
-                    <label>Name</label>
-                    <input type="text" class="form-control" formControlName="cname" />
-                    <label>Age</label>
-                    <input type="text" class="form-control" formControlName="cge" />
-
-
-
                     <br />
-                    <button type="button" class="btn btn-info mb-3 " (click)="removeFormControl(i)">
+
+
+                    <button type="button" class="btn btn-info mb-3 " (click)="removeCasualityControl(i)">
                       remove formGroup
                     </button>
                     <hr />
@@ -188,7 +180,7 @@
             </div>
             <mat-action-row>
 
-              <button mat-button color="primary" (click)="addChildren()">
+              <button mat-button color="primary" (click)="addChildrenCasuality()">
                 Add Entry
               </button>
 
@@ -240,8 +232,8 @@
           </mat-expansion-panel>
           <br />
           <button (click)="onSubmit(f)" class="btn btn-success btn-lg btn-block">
-              Submit
-            </button>
+            Submit
+          </button>
           <!-- <mat-expansion-panel>
             <mat-expansion-panel-header>
               <mat-panel-title>
