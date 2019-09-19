@@ -17,6 +17,8 @@ export class SurveyComponent implements OnInit {
   public surveyForm: FormGroup;
   public children: Array<{}>;
 
+  step = 0;
+
 
 
   ngOnInit() {
@@ -75,6 +77,18 @@ export class SurveyComponent implements OnInit {
     this.apiservice.savePeople(this.surveyForm.value).subscribe(() => {
     alert('Student successfully added into database!');
     });
+  }
+
+  setStep(index: number) {
+    this.step = index;
+  }
+
+  nextStep() {
+    this.step++;
+  }
+
+  prevStep() {
+    this.step--;
   }
 
 }
