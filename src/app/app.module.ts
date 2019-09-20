@@ -11,10 +11,16 @@ import { AppComponent } from './app.component';
 import { SurveyComponent } from './survey/survey.component';
 import { AdminPanelComponent } from './admin-panel/admin-panel.component';
 import { NavbarComponent } from './navbar/navbar.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
+import { MatGridListModule } from '@angular/material/grid-list';
+import { MatMenuModule } from '@angular/material/menu';
+import { MatIconModule } from '@angular/material/icon';
+import { LayoutModule } from '@angular/cdk/layout';
 
 const appRoutes: Routes = [
   {path: '', component: SurveyComponent},
-  {path: 'adminPanel', component: AdminPanelComponent}
+  {path: 'adminPanel', component: AdminPanelComponent},
+  {path: 'dashboard', component: DashboardComponent}
 ];
 
 @NgModule({
@@ -22,7 +28,8 @@ const appRoutes: Routes = [
     AppComponent,
     SurveyComponent,
     AdminPanelComponent,
-    NavbarComponent
+    NavbarComponent,
+    DashboardComponent
   ],
   imports: [
     BrowserModule,
@@ -34,7 +41,8 @@ const appRoutes: Routes = [
     MatCardModule,
     MatFormFieldModule,
     ReactiveFormsModule,
-    MatInputModule, MatButtonModule, MatExpansionModule, MatToolbarModule, MatSelectModule, MatOptionModule
+    MatInputModule, MatButtonModule, MatExpansionModule, MatToolbarModule,
+    MatSelectModule, MatOptionModule, MatGridListModule, MatMenuModule, MatIconModule, LayoutModule
   ],
   providers: [],
   bootstrap: [AppComponent, NavbarComponent]
