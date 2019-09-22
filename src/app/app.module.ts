@@ -23,9 +23,28 @@ import { FirstComponent } from './first/first.component';
 import { SecondComponent } from './second/second.component';
 
 const appRoutes: Routes = [
-  {path: '', component: SurveyComponent},
-  {path: 'adminPanel', component: AdminPanelComponent},
-  {path: 'dashboard', component: DashboardComponent},
+  {
+    path: 'survey',
+    component: SurveyComponent
+  },
+  {
+    path: 'adminPanel',
+    component: AdminPanelComponent
+  },
+  {
+    path: 'dashboard',
+    component: DashboardComponent
+  },
+  {
+    path: '',
+    redirectTo: '/survey',
+    pathMatch: 'full'
+},
+{
+    path: '**',
+    redirectTo: '/survey',
+    pathMatch: 'full'
+},
 
 
   { path: 'first', component: FirstComponent, data: { title: 'First Component' } },
