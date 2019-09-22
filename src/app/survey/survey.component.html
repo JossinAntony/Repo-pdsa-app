@@ -36,6 +36,16 @@
                   <label>Date:</label>
                   <input type="date" class="form-control" formControlName="sdate" />
                 </div>
+                <!-- Disaster code -->
+                <div class="col col- col-sm-6">
+                  <label>Disaster code:</label>
+                  <input type="text" class="form-control" formControlName="dcode" />
+                </div>
+                <!-- Disaster place -->
+                <div class="col col- col-sm-6">
+                  <label>Place:</label>
+                  <input type="text" class="form-control" formControlName="dplace" />
+                </div>
               </div>
             </div>
 
@@ -235,217 +245,218 @@
           </mat-expansion-panel>
           <br />
           <mat-expansion-panel [expanded]="step === 4" (opened)="setStep(4)">
-              <mat-expansion-panel-header>
-                <mat-panel-title>
-                  <h5>Assets Damages:</h5>
-                </mat-panel-title>
-                <mat-panel-description>
-                  <em> Please enter the details of damages to fixed assets here</em>
-                </mat-panel-description>
-              </mat-expansion-panel-header>
-              <!-- Add Children-->
-              <div class="group-gap">
-                <ng-container *ngFor="
+            <mat-expansion-panel-header>
+              <mat-panel-title>
+                <h5>Assets Damages:</h5>
+              </mat-panel-title>
+              <mat-panel-description>
+                <em> Please enter the details of damages to fixed assets here</em>
+              </mat-panel-description>
+            </mat-expansion-panel-header>
+            <!-- Add Children-->
+            <div class="group-gap">
+              <ng-container *ngFor="
                     let item of surveyForm.controls['assets'].controls;
                     let i = index
                   ">
-                  <div [formGroup]="item">
-                    <div class="container">
-                      <div class="row">
-                        <!-- Asset type -->
-                        <div class="col col- col-sm-6">
-                          <mat-form-field>
-                            <mat-label>Asset Type</mat-label>
-                            <mat-select [value]="['astTyp']" formControlName="astTyp">
-                              <mat-option value="">select</mat-option>
-                              <mat-option value="house">House</mat-option>
-                              <mat-option value="building">Building</mat-option>
-                            </mat-select>
-                          </mat-form-field>
-                        </div>
-<!-- Damage Status -->
-                        <div class="col col- col-sm-6">
-                            <mat-form-field>
-                              <mat-label>Asset Damage Status</mat-label>
-                              <mat-select [value]="['astStatus']" formControlName="astStatus">
-                                <mat-option value="">select</mat-option>
-                                <mat-option value="mild">Mild</mat-option>
-                                <mat-option value="total">Total Damage</mat-option>
-                              </mat-select>
-                            </mat-form-field>
-                          </div>
-
-                        <!-- Details of buildings -->
-                        <div class="col col- col-sm-6">
-                          <label>Building number</label>
-                          <input type="text" class="form-control" formControlName="astBldno" />
-                        </div>
-                        <div class="col col- col-sm-6">
-                          <label>Area in square feet</label>
-                          <input type="text" class="form-control" formControlName="astArea" />
-                        </div>
-
-
-
+                <div [formGroup]="item">
+                  <div class="container">
+                    <div class="row">
+                      <!-- Asset type -->
+                      <div class="col col- col-sm-6">
+                        <mat-form-field>
+                          <mat-label>Asset Type</mat-label>
+                          <mat-select [value]="['astTyp']" formControlName="astTyp">
+                            <mat-option value="">select</mat-option>
+                            <mat-option value="house">House</mat-option>
+                            <mat-option value="building">Building</mat-option>
+                          </mat-select>
+                        </mat-form-field>
                       </div>
+                      <!-- Damage Status -->
+                      <div class="col col- col-sm-6">
+                        <mat-form-field>
+                          <mat-label>Asset Damage Status</mat-label>
+                          <mat-select [value]="['astStatus']" formControlName="astStatus">
+                            <mat-option value="">select</mat-option>
+                            <mat-option value="mild">Mild</mat-option>
+                            <mat-option value="total">Total Damage</mat-option>
+                          </mat-select>
+                        </mat-form-field>
+                      </div>
+
+                      <!-- Details of buildings -->
+                      <div class="col col- col-sm-6">
+                        <label>Building number</label>
+                        <input type="text" class="form-control" formControlName="astBldno" />
+                      </div>
+                      <div class="col col- col-sm-6">
+                        <label>Area in square feet</label>
+                        <input type="text" class="form-control" formControlName="astArea" />
+                      </div>
+
+
+
                     </div>
                   </div>
-                  <br />
+                </div>
+                <br />
 
-                  <div class="col col- col-sm-8">
-                    <button mat-stroked-button color="warn" (click)="removeAssetControl(i)">
-                      Remove Entry
-                    </button>
-                  </div>
-                  <div class="col col- col-sm-12">
-                    <hr />
-                  </div>
-                </ng-container>
-              </div>
-              <mat-action-row>
-                <button mat-button color="primary" (click)="addChildrenAsset()">
-                  Add Entry
-                </button>
-
-                <div>
-                  <button mat-button color="warn" (click)="prevStep()">
-                    Previous
-                  </button>
-                  <button mat-button color="primary" (click)="nextStep()">
-                    Next
+                <div class="col col- col-sm-8">
+                  <button mat-stroked-button color="warn" (click)="removeAssetControl(i)">
+                    Remove Entry
                   </button>
                 </div>
-              </mat-action-row>
-            </mat-expansion-panel>
-            <br />
+                <div class="col col- col-sm-12">
+                  <hr />
+                </div>
+              </ng-container>
+            </div>
+            <mat-action-row>
+              <button mat-button color="primary" (click)="addChildrenAsset()">
+                Add Entry
+              </button>
+
+              <div>
+                <button mat-button color="warn" (click)="prevStep()">
+                  Previous
+                </button>
+                <button mat-button color="primary" (click)="nextStep()">
+                  Next
+                </button>
+              </div>
+            </mat-action-row>
+          </mat-expansion-panel>
+          <br />
 
 
 
-            <mat-expansion-panel [expanded]="step === 5" (opened)="setStep(5)">
-                <mat-expansion-panel-header>
-                  <mat-panel-title>
-                    <h5>Vehicle Damages:</h5>
-                  </mat-panel-title>
-                  <mat-panel-description>
-                    <em> Please enter the details of damages to vehicles here</em>
-                  </mat-panel-description>
-                </mat-expansion-panel-header>
-                <!-- Add Children-->
-                <div class="group-gap">
-                  <ng-container *ngFor="
+          <mat-expansion-panel [expanded]="step === 5" (opened)="setStep(5)">
+            <mat-expansion-panel-header>
+              <mat-panel-title>
+                <h5>Vehicle Damages:</h5>
+              </mat-panel-title>
+              <mat-panel-description>
+                <em> Please enter the details of damages to vehicles here</em>
+              </mat-panel-description>
+            </mat-expansion-panel-header>
+            <!-- Add Children-->
+            <div class="group-gap">
+              <ng-container *ngFor="
                       let item of surveyForm.controls['vehicles'].controls;
                       let i = index
                     ">
-                    <div [formGroup]="item">
-                      <div class="container">
-                        <div class="row">
-                          <!-- Asset type -->
-                          <div class="col col- col-sm-6">
-                            <mat-form-field>
-                              <mat-label>Vehicle Type</mat-label>
-                              <mat-select [value]="['vhlTyp']" formControlName="vhlTyp">
-                                <mat-option value="">select</mat-option>
-                                <mat-option value="twoWheeler">Two-wheeler</mat-option>
-                                <mat-option value="fourWheeler">Four-wheeler</mat-option>
-                                <mat-option value="hvehicle">Heavy Vehicle</mat-option>
-                              </mat-select>
-                            </mat-form-field>
-                          </div>
-  <!-- Damage Status -->
-                          <div class="col col- col-sm-6">
-                              <mat-form-field>
-                                <mat-label>Vehicle Damage Status</mat-label>
-                                <mat-select [value]="['vhlStatus']" formControlName="vhlStatus">
-                                  <mat-option value="">select</mat-option>
-                                  <mat-option value="mild">Mild</mat-option>
-                                  <mat-option value="total">Total Damage</mat-option>
-                                </mat-select>
-                              </mat-form-field>
-                            </div>
-
-                          <!-- Make & Model of Vehicles -->
-                          <div class="col col- col-sm-6">
-                            <label>Make</label>
-                            <input type="text" class="form-control" formControlName="vhlMake" />
-                          </div>
-                          <div class="col col- col-sm-6">
-                            <label>Model</label>
-                            <input type="text" class="form-control" formControlName="vhlMdl" />
-                          </div>
-                          <!-- No. & Insurance no. of Vehicles -->
-                          <div class="col col- col-sm-6">
-                              <label>Registration number</label>
-                              <input type="text" class="form-control" formControlName="vhlNo" />
-                            </div>
-                            <div class="col col- col-sm-6">
-                              <label>Insurance number</label>
-                              <input type="text" class="form-control" formControlName="vhlIns" />
-                            </div>
-
-
-                        </div>
-                      </div>
-                    </div>
-                    <br />
-
-                    <div class="col col- col-sm-8">
-                      <button mat-stroked-button color="warn" (click)="removeVehicleControl(i)">
-                        Remove Entry
-                      </button>
-                    </div>
-                    <div class="col col- col-sm-12">
-                      <hr />
-                    </div>
-                  </ng-container>
-                </div>
-                <mat-action-row>
-                  <button mat-button color="primary" (click)="addChildrenVehicle()">
-                    Add Entry
-                  </button>
-
-                  <div>
-                    <button mat-button color="warn" (click)="prevStep()">
-                      Previous
-                    </button>
-                    <button mat-button color="primary" (click)="nextStep()">
-                      Next
-                    </button>
-                  </div>
-                </mat-action-row>
-              </mat-expansion-panel>
-              <br />
-
-
-              <mat-expansion-panel [expanded]="step === 6" (opened)="setStep(6)">
-                  <mat-expansion-panel-header>
-                    <mat-panel-title>
-                      <h5>Comments:</h5>
-                    </mat-panel-title>
-                    <mat-panel-description>
-                      <em>
-                        Please enter your comments if any, here</em></mat-panel-description>
-                  </mat-expansion-panel-header>
+                <div [formGroup]="item">
                   <div class="container">
                     <div class="row">
-                      <!-- Surveyor name -->
-                      <div class="col col- col-sm-12">
-                        <label></label>
-                        <textarea matInput class="form-control" formControlName="cmnts" placeholder="Leave a comment"></textarea>
+                      <!-- Asset type -->
+                      <div class="col col- col-sm-6">
+                        <mat-form-field>
+                          <mat-label>Vehicle Type</mat-label>
+                          <mat-select [value]="['vhlTyp']" formControlName="vhlTyp">
+                            <mat-option value="">select</mat-option>
+                            <mat-option value="twoWheeler">Two-wheeler</mat-option>
+                            <mat-option value="fourWheeler">Four-wheeler</mat-option>
+                            <mat-option value="hvehicle">Heavy Vehicle</mat-option>
+                          </mat-select>
+                        </mat-form-field>
                       </div>
+                      <!-- Damage Status -->
+                      <div class="col col- col-sm-6">
+                        <mat-form-field>
+                          <mat-label>Vehicle Damage Status</mat-label>
+                          <mat-select [value]="['vhlStatus']" formControlName="vhlStatus">
+                            <mat-option value="">select</mat-option>
+                            <mat-option value="mild">Mild</mat-option>
+                            <mat-option value="total">Total Damage</mat-option>
+                          </mat-select>
+                        </mat-form-field>
+                      </div>
+
+                      <!-- Make & Model of Vehicles -->
+                      <div class="col col- col-sm-6">
+                        <label>Make</label>
+                        <input type="text" class="form-control" formControlName="vhlMake" />
+                      </div>
+                      <div class="col col- col-sm-6">
+                        <label>Model</label>
+                        <input type="text" class="form-control" formControlName="vhlMdl" />
+                      </div>
+                      <!-- No. & Insurance no. of Vehicles -->
+                      <div class="col col- col-sm-6">
+                        <label>Registration number</label>
+                        <input type="text" class="form-control" formControlName="vhlNo" />
+                      </div>
+                      <div class="col col- col-sm-6">
+                        <label>Insurance number</label>
+                        <input type="text" class="form-control" formControlName="vhlIns" />
+                      </div>
+
 
                     </div>
                   </div>
-
-                  <mat-action-row>
-                    <button mat-button color="warn" (click)="prevStep()">
-                      Previous
-                    </button>
-                    <button mat-button color="primary" (click)="nextStep()">
-                      Done
-                    </button>
-                  </mat-action-row>
-                </mat-expansion-panel>
+                </div>
                 <br />
+
+                <div class="col col- col-sm-8">
+                  <button mat-stroked-button color="warn" (click)="removeVehicleControl(i)">
+                    Remove Entry
+                  </button>
+                </div>
+                <div class="col col- col-sm-12">
+                  <hr />
+                </div>
+              </ng-container>
+            </div>
+            <mat-action-row>
+              <button mat-button color="primary" (click)="addChildrenVehicle()">
+                Add Entry
+              </button>
+
+              <div>
+                <button mat-button color="warn" (click)="prevStep()">
+                  Previous
+                </button>
+                <button mat-button color="primary" (click)="nextStep()">
+                  Next
+                </button>
+              </div>
+            </mat-action-row>
+          </mat-expansion-panel>
+          <br />
+
+
+          <mat-expansion-panel [expanded]="step === 6" (opened)="setStep(6)">
+            <mat-expansion-panel-header>
+              <mat-panel-title>
+                <h5>Comments:</h5>
+              </mat-panel-title>
+              <mat-panel-description>
+                <em>
+                  Please enter your comments if any, here</em></mat-panel-description>
+            </mat-expansion-panel-header>
+            <div class="container">
+              <div class="row">
+                <!-- Surveyor name -->
+                <div class="col col- col-sm-12">
+                  <label></label>
+                  <textarea matInput class="form-control" formControlName="cmnts"
+                    placeholder="Leave a comment"></textarea>
+                </div>
+
+              </div>
+            </div>
+
+            <mat-action-row>
+              <button mat-button color="warn" (click)="prevStep()">
+                Previous
+              </button>
+              <button mat-button color="primary" (click)="nextStep()">
+                Done
+              </button>
+            </mat-action-row>
+          </mat-expansion-panel>
+          <br />
 
 
           <button (click)="onSubmit(f)" class="btn btn-success btn-lg btn-block">

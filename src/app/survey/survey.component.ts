@@ -2,7 +2,7 @@ import { Component, OnInit, ElementRef } from '@angular/core';
 import { NgForm, FormBuilder, FormArray, FormGroup } from '@angular/forms';
 import {MatCard, MatOption, MatSelect} from '@angular/material';
 import { ApiService } from '../api.service';
-import { ChildrenOutletContexts } from '@angular/router';
+import { ChildrenOutletContexts, Router } from '@angular/router';
 
 
 
@@ -13,12 +13,11 @@ import { ChildrenOutletContexts } from '@angular/router';
 })
 export class SurveyComponent implements OnInit {
 
-  constructor(private apiservice: ApiService, public fb: FormBuilder, private ef: ElementRef) { }
+  constructor(private apiservice: ApiService, public fb: FormBuilder, private ef: ElementRef, private router: Router) { }
 
   public surveyForm: FormGroup;
   public children: Array<{}>;
 
-  // domCasStatus = this.ef.nativeElement.querySelector('#casStatus');
 
   step = 0;
 
@@ -31,6 +30,8 @@ export class SurveyComponent implements OnInit {
       sname: [''],
       sdesig: [''],
       sdate: [''],
+      dcode: [''],
+      dplace: [''],
 
       pname: [''],
       pge: [''],
@@ -168,10 +169,11 @@ removeVehicleControl(i) {
 // --- Submit function--------------------------------------------------------------------
 
   onSubmit(data: NgForm) {
-    // this.apiservice.savePeople(this.surveyForm.value).subscribe(() => {
-    // alert('Student successfully added into database!');
-    console.log(JSON.stringify(this.surveyForm.value));
+    this.apiservice.savePeople(this.surveyForm.value).subscribe(() => {
+    alert('Student successfully added into database!');
 
+    console.log(JSON.stringify(this.surveyForm.value));
+    });
     }
 
 // ---------------------------------------------------------------------------------------
