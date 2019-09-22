@@ -1,22 +1,19 @@
-<button (click)='onRetrieve()'>Retrieve collection</button>
-<table *ngFor="let item of collection; let i = index">
-  <tr>
-    {{item.pname}};
-  </tr>
-  <tr>
-    {{item.pge}};
-  </tr>
-  <tr>
-    {{item.padhr}};
-  </tr>
-  <tr >
-    {{item.children[i].cname}};
-  </tr>
-  <tr >
-    {{item.children[i].cge}};
-  </tr>
-  <tr style="border-bottom:1px solid black">
-      <td colspan="100%"></td>
-    </tr>
-    <tr><td></td></tr>
-</table>
+
+<main>
+    <div class="container">
+        <div class="row row-offcanvas row-offcanvas-right">
+            <div class="col-xs-12 col-sm-9">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a routerLink="/adminPanel">AdminPanel</a></li>
+                    <li class="breadcrumb-item active">Statistics</li>
+                </ol>
+                <div class="jumbotron">
+                    <h1>Survey Statistics</h1>
+                    <p>An overview of the statistical analysis of data collected from the survey.</p>
+                </div>
+                <router-outlet></router-outlet>
+            </div>
+            <router-outlet name="sidemenu"></router-outlet>
+        </div>
+    </div>
+</main>
