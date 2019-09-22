@@ -29,7 +29,21 @@ const appRoutes: Routes = [
   },
   {
     path: 'adminPanel',
-    component: AdminPanelComponent
+    component: AdminPanelComponent,
+    children: [
+      {
+        path: 'first',
+        component: FirstComponent
+      },
+      {
+        path: 'second',
+        component: SecondComponent
+      },
+      {
+        path: 'dashboard',
+        component: DashboardComponent
+      }
+    ],
   },
   {
     path: 'dashboard',
