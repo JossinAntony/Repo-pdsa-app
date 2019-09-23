@@ -1,0 +1,51 @@
+<div class="container">
+  <div class="row">
+    <div class="col col-12 col-sm-2"></div>
+    <div class="col col-12 col-sm-8">
+      <br><br><br>
+      <h1 class="text-center">Search Surveyee</h1>
+      <br><br>
+      <form (ngSubmit)=onSubmit(f) #f="ngForm">
+        <table class="table table-borderless">
+          <tr>
+            <td>
+              <h4 class="text-left">Surveyee Name:</h4>
+            </td>
+            <td><input type="text" class="form-control" name="pname" ngModel></td>
+            <td><button class="btn btn-info" type="submit" ngSubmit>SEARCH</button></td>
+          </tr>
+        </table>
+      </form>
+    </div>
+    <div class="col col-12 col-sm-2"></div>
+  </div>
+</div>
+<!-- ---------------------------------------- -->
+<p *ngIf="!personFound else display"></p>
+<ng-template #display>
+<div class="container mt-5">
+  <div class="row">
+      <div class="col col-12 col-sm-2"></div>
+      <div class="col col-12 col-sm-8">
+          <br><br>
+          <h1 class="text-center">Search Results</h1>
+          <br><br>
+          <table class="table table-striped table-light">
+              <thead class="table-dark"> <!--bg-primary, success, warning, danger, info-->
+                  <tr>
+                      <th>Surveyees</th>
+                      <th></th>
+                  </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let data of personData; let i = index">
+                  <td>{{data.pname}}</td>
+                  <td><button class="btn btn-info" (click)= 'view(i)' >view</button></td>
+                </tr>
+              </tbody>
+          </table>
+      </div>
+      <div class="col col-12 col-sm-2"></div>
+  </div>
+</div>
+</ng-template>

@@ -7,6 +7,7 @@ import {MatTableModule, MatCardModule, MatFormFieldModule, MatSelectModule, MatO
 import {MatInputModule, MatButtonModule, MatExpansionModule, MatToolbarModule} from '@angular/material';
 import {BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatNativeDateModule, MatSidenavModule, MatListModule} from '@angular/material';
+import { GoogleChartsModule } from 'angular-google-charts';
 
 
 import { AppComponent } from './app.component';
@@ -21,6 +22,7 @@ import { LayoutModule } from '@angular/cdk/layout';
 import { SidenavComponent } from './sidenav/sidenav.component';
 import { FirstComponent } from './first/first.component';
 import { SecondComponent } from './second/second.component';
+import { ShowDataComponent } from './show-data/show-data.component';
 
 const appRoutes: Routes = [
   {
@@ -32,8 +34,8 @@ const appRoutes: Routes = [
     component: AdminPanelComponent,
     children: [
       {
-        path: 'first',
-        component: FirstComponent
+        path: 'showData',
+        component: ShowDataComponent
       },
       {
         path: 'second',
@@ -74,7 +76,8 @@ const appRoutes: Routes = [
     DashboardComponent,
     SidenavComponent,
     FirstComponent,
-    SecondComponent
+    SecondComponent,
+    ShowDataComponent
   ],
   imports: [
     BrowserModule,
@@ -88,7 +91,8 @@ const appRoutes: Routes = [
     ReactiveFormsModule,
     MatInputModule, MatButtonModule, MatExpansionModule, MatToolbarModule,
     MatSelectModule, MatOptionModule, MatGridListModule, MatMenuModule, MatIconModule, LayoutModule,
-    MatNativeDateModule, MatSidenavModule, MatListModule
+    MatNativeDateModule, MatSidenavModule, MatListModule,
+    GoogleChartsModule
   ],
   providers: [],
   bootstrap: [AppComponent, NavbarComponent]

@@ -15,4 +15,8 @@ export class ApiService {
   retrievePeople() {
     return this.http.get('http://localhost:3052/retrievePeopleAPI');
   }
+
+  retrievePersonByName(data) {
+    return this.http.post('http://localhost:3052/retrievePersonByNameAPI', data);
+  }
 }
