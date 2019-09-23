@@ -10,8 +10,8 @@ import { Person } from '../person.model';
 })
 export class ShowDataComponent implements OnInit {
 
-  personData: Array<any>;
-  showPerson: Array<any>;
+  personData: any;
+  showPerson: any;
   personFound = false;
   personDisplay = false;
   pname: any;
@@ -19,6 +19,8 @@ export class ShowDataComponent implements OnInit {
   constructor(private apiservice: ApiService) { }
 
   ngOnInit() {
+    this.personFound = false;
+    this.personDisplay = false;
   }
 
   onSubmit(data: NgForm) {
@@ -26,7 +28,8 @@ export class ShowDataComponent implements OnInit {
       if (response.length > 0) {
       this.personData = response;
       this.personFound = true;
-      console.log(this.personData);
+      this.personDisplay = false;
+      // console.log(this.personData);
       } else {
         alert( 'No matching entires found!');
         this.personFound = false;
@@ -36,7 +39,8 @@ export class ShowDataComponent implements OnInit {
 
   view(i) {
     this.showPerson = this.personData[i];
-    // this.personFound = false;
-    // this.personDisplay = true;
+    console.log(this.showPerson);
+    this.personFound = false;
+    this.personDisplay = true;
   }
 }

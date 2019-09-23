@@ -23,29 +23,233 @@
 <!-- ---------------------------------------- -->
 <p *ngIf="!personFound else display"></p>
 <ng-template #display>
-<div class="container mt-5">
-  <div class="row">
+  <div class="container mt-5">
+    <div class="row">
       <div class="col col-12 col-sm-2"></div>
       <div class="col col-12 col-sm-8">
-          <br><br>
-          <h1 class="text-center">Search Results</h1>
-          <br><br>
-          <table class="table table-striped table-light">
-              <thead class="table-dark"> <!--bg-primary, success, warning, danger, info-->
-                  <tr>
-                      <th>Surveyees</th>
-                      <th></th>
-                  </tr>
-              </thead>
-              <tbody>
-                <tr *ngFor="let data of personData; let i = index">
-                  <td>{{data.pname}}</td>
-                  <td><button class="btn btn-info" (click)= 'view(i)' >view</button></td>
-                </tr>
-              </tbody>
-          </table>
+        <br><br>
+        <h1 class="text-center">Search Results</h1>
+        <br><br>
+        <table class="table table-striped table-light">
+          <thead class="table-dark">
+            <tr>
+              <th>Surveyees</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let data of personData; let i = index">
+              <td>{{data.pname}}</td>
+              <td><button class="btn btn-info" (click)='view(i)'>view</button></td>
+            </tr>
+          </tbody>
+        </table>
       </div>
       <div class="col col-12 col-sm-2"></div>
+    </div>
   </div>
-</div>
+</ng-template>
+<p *ngIf="!personDisplay else displayPerson"></p>
+<ng-template #displayPerson>
+  <div class="container mt-5">
+    <div class="row">
+      <div class="col col-12 col-sm-2"></div>
+      <div class="col col-12 col-sm-8">
+        <br><br>
+        <!-- <h1 class="text-center">Search Results</h1> -->
+        <br><br>
+        <table class="table table-striped table-light">
+          <thead class="table-dark">
+            <!--bg-primary, success, warning, danger, info-->
+            <tr>
+              <th>Entry</th>
+              <th>Details</th>
+            </tr>
+          </thead>
+          <tbody>
+            <!-- Disastercode, place and date -->
+            <tr>
+              <td>Disaster code:</td>
+              <td>{{showPerson.dcode}}</td>
+            </tr>
+            <tr>
+              <td>Date:</td>
+              <td>{{showPerson.sdate}}</td>
+            </tr>
+            <tr>
+              <td>Place:</td>
+              <td>{{showPerson.dplace}}</td>
+            </tr>
+
+            <!-- Identification details -->
+            <tr>
+              <td>Name:</td>
+              <td>{{showPerson.pname}}</td>
+            </tr>
+            <tr>
+              <td>Age:</td>
+              <td>{{showPerson.pge}}</td>
+            </tr>
+
+            <tr>
+              <td>Aadhar:</td>
+              <td>{{showPerson.padhr}}</td>
+            </tr>
+
+            <tr>
+              <td>Housename:</td>
+              <td>{{showPerson.phname}}</td>
+            </tr>
+
+            <tr>
+              <td>Ward:</td>
+              <td>{{showPerson.pward}}</td>
+            </tr>
+
+            <tr>
+              <td>Panchayath:</td>
+              <td>{{showPerson.ppnchyth}}</td>
+            </tr>
+
+            <tr>
+              <td>Thaluk:</td>
+              <td>{{showPerson.pthlk}}</td>
+            </tr>
+            <tr>
+              <td>District:</td>
+              <td>{{showPerson.pdstrct}}</td>
+            </tr>
+
+            <!-- Contact details -->
+            <tr>
+              <td>Email:</td>
+              <td>{{showPerson.pmail}}</td>
+            </tr>
+            <tr>
+              <td>Mobile:</td>
+              <td>{{showPerson.pmob}}</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <!-- Casuality details -->
+        <div class="container mt-5">
+          <div class="row">
+            <div class="col col-12 col-sm-12">
+              <h5 class="text-center">Casualities</h5>
+              <br>
+              <table class="table table-striped table-light">
+                <thead class="table-dark">
+                  <tr>
+                    <th>Casuality</th>
+                    <th>Name</th>
+                    <th>Age</th>
+                    <th>Relation</th>
+                    <th>Status</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let data of showPerson.casualities; let i = index">
+                    <td>{{(i+1)}}</td>
+                    <td>{{data.casName}}</td>
+                    <td>{{data.casAge}}</td>
+                    <td>{{data.casRln}}</td>
+                    <td>{{data.casStatus}}</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+        <!-- Assets details -->
+        <div class="container mt-5">
+          <div class="row">
+            <div class="col col-12 col-sm-12">
+              <h5 class="text-center">Assets</h5>
+              <br>
+              <table class="table table-striped table-light">
+                <thead class="table-dark">
+                  <tr>
+                    <th>Assets</th>
+                    <th>Type</th>
+                    <th>Identification number</th>
+                    <th>Area (sq.ft)</th>
+                    <th>Status</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let data of showPerson.assets; let i = index">
+                    <td>{{(i+1)}}</td>
+                    <td>{{data.astTyp}}</td>
+                    <td>{{data.astBldno}}</td>
+                    <td>{{data.astArea}}</td>
+                    <td>{{data.astStatus}}</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+        <!-- Vehicle details -->
+        <div class="container mt-5">
+          <div class="row">
+            <div class="col col-12 col-sm-12">
+              <h5 class="text-center">Vehicles</h5>
+              <br>
+              <table class="table table-striped table-light">
+                <thead class="table-dark">
+                  <tr>
+                    <th>Vehicles</th>
+                    <th>Type</th>
+                    <th>Make</th>
+                    <th>Model</th>
+                    <th>Identification number</th>
+                    <th>Insurance number</th>
+                    <th>Status</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let data of showPerson.vehicles; let i = index">
+                    <td>{{(i+1)}}</td>
+                    <td>{{data.vhlTyp}}</td>
+                    <td>{{data.vhlMake}}</td>
+                    <td>{{data.vhlMdl}}</td>
+                    <td>{{data.vhlNo}}</td>
+                    <td>{{data.vhlIns}}</td>
+                    <td>{{data.vhlStatus}}</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+        <!-- Comments -->
+        <div class="container mt-5">
+          <div class="row">
+            <div class="col col-12 col-sm-12">
+              <!-- <h5 class="text-center">Comments</h5> -->
+              <br>
+              <table class="table table-striped table-light">
+                <thead class="table-dark">
+                  <tr>
+                    <th>Comments</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>{{showPerson.cmnts}}</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+        <br><br><br>
+      </div>
+      <div class="col col-12 col-sm-2"></div>
+    </div>
+  </div>
 </ng-template>
