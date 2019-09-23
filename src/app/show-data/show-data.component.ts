@@ -58,87 +58,7 @@ export class ShowDataComponent implements OnInit {
     this.personDisplay = true;
   }
 
-
-
-
-
-  printPdf() {
-    // loop first table
-    $('#ident tr').each(function () {
-      // get the name
-      var name = $(this).find('td:first').text(),
-        // search the name in the second table
-        tbl2row = $("#second td").filter(function () {
-          return $(this).text() == name;
-        }).closest("tr");
-
-      // if the name doesn't exist in the second table
-      if (tbl2row.length == 0) {
-        // clone the row and add it to the result table
-        $(this).clone().appendTo('.result');
-      }
-    });
-
-    // loop the second table
-    $('#casuality tr').each(function () {
-      var name = $(this).find('td:first').text(),
-        resRow = $(".result td").filter(function () {
-          return $(this).text() == name;
-        }).closest("tr");
-
-      $(this).clone().appendTo('.result');
-    });
-
-    // loop the third table
-    $('#asset tr').each(function () {
-      var name = $(this).find('td:first').text(),
-        resRow = $(".result td").filter(function () {
-          return $(this).text() == name;
-        }).closest("tr");
-
-      $(this).clone().appendTo('.result');
-    });
-
-    // loop the fourth table
-    $('#vehicle tr').each(function () {
-      var name = $(this).find('td:first').text(),
-        resRow = $(".result td").filter(function () {
-          return $(this).text() == name;
-        }).closest("tr");
-
-      $(this).clone().appendTo('.result');
-    });
-
-
-    // loop the fifth table
-    $('#comments tr').each(function () {
-      var name = $(this).find('td:first').text(),
-        resRow = $(".result td").filter(function () {
-          return $(this).text() == name;
-        }).closest("tr");
-
-      $(this).clone().appendTo('.result');
-
-    });
-  }
-
-
-
   downloadPDF() {
-
-    // let columns = ["ID", "Name", "Country"];
-    // let rows = [
-    //     [1, "Shaw", "Tanzania"],
-    //     [2, "Nelson", "Kazakhstan"],
-    //     [3, "Garcia", "Madagascar"],
-    // ];
-
-    // let doc = new jsPDF('p', 'mm', 'a4');
-    // //doc.autoTable(columns, rows); // typescript compile time error
-    // doc.autoTable({html: '#toPdf'});
-    // doc.save('table.pdf');
-    // }
-
     var doc = new jsPDF('p', 'pt', 'A4');
 
     var header = function (data) {
@@ -164,6 +84,6 @@ export class ShowDataComponent implements OnInit {
     doc.autoTable(res4.columns, res4.data, {
         startY: doc.lastAutoTable.finalY + 50
     });
-    doc.save("test.pdf");
+    doc.save("Survey report.pdf");
   }
 }
