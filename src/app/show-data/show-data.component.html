@@ -254,20 +254,48 @@
 
 
               <td><button class="btn btn-info" (click)="printPdf()">print</button></td>
+              <table class="result"  id="toPdf">
+                </table>
+              <td><button class="btn btn-info" (click)="downloadPDF()" id ="cmd">print-pdf</button></td>
             </div>
+
           </div>
         </div>
         <br><br><br>
       </div>
       <div class="col col-12 col-sm-2"></div>
-      <table class="result" style="" id="toPdf">
-        </table>
+        <div id="editor"></div>
     </div>
   </div>
 </ng-template>
 
-
-
-
-
-
+<table id="table">
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>First name</th>
+        <th>Last name</th>
+        <th>Email</th>
+        <th>Country</th>
+        <th>IP-address</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <td>1</td>
+        <td>Donna</td>
+        <td>Moore</td>
+        <td>dmoore0@furl.net</td>
+        <td>China</td>
+        <td>211.56.242.221</td>
+    </tr>
+    <tr>
+        <td>2</td>
+        <td>Janice</td>
+        <td>Henry</td>
+        <td>jhenry1@theatlantic.com</td>
+        <td>Ukraine</td>
+        <td>38.36.7.199</td>
+    </tr>
+    </tbody>
+</table>

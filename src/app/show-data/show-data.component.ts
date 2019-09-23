@@ -6,6 +6,10 @@ import * as jspdf from 'jspdf';
 import html2canvas from 'html2canvas';
 import * as $ from 'jquery';
 
+//import jsPDF from 'jspdf';
+import 'jspdf-autotable';
+
+declare var jsPDF: any;
 
 @Component({
   selector: 'app-show-data',
@@ -60,7 +64,7 @@ export class ShowDataComponent implements OnInit {
 
   printPdf() {
     // loop first table
-    $('#ident tr').each(function() {
+    $('#ident tr').each(function () {
       // get the name
       var name = $(this).find('td:first').text(),
         // search the name in the second table
@@ -117,7 +121,49 @@ export class ShowDataComponent implements OnInit {
 
     });
   }
+
+
+
+  downloadPDF() {
+
+    // let columns = ["ID", "Name", "Country"];
+    // let rows = [
+    //     [1, "Shaw", "Tanzania"],
+    //     [2, "Nelson", "Kazakhstan"],
+    //     [3, "Garcia", "Madagascar"],
+    // ];
+
+    // let doc = new jsPDF('p', 'mm', 'a4');
+    // //doc.autoTable(columns, rows); // typescript compile time error
+    // doc.autoTable({html: '#toPdf'});
+    // doc.save('table.pdf');
+    // }
+
+    var doc = new jsPDF('p', 'pt', 'A4');
+
+    var header = function (data) {
+      doc.setFontSize(18);
+      doc.setTextColor(40);
+      doc.setFontStyle('normal');
+      //doc.addImage(headerImgData, 'JPEG', data.settings.margin.left, 20, 50, 50);
+      doc.text("Survey Report", data.settings.margin.left, 50);
+  };
+
+    var res = doc.autoTableHtmlToJson(document.getElementById('ident'));
+    doc.autoTable(res.columns, res.data,  {margin: {top: 80}, beforePageContent: header});
+    var res2 = doc.autoTableHtmlToJson(document.getElementById('casuality'));
+    doc.autoTable(res2.columns, res2.data, {
+        startY: doc.lastAutoTable.finalY + 50
+    });
+   var res3 = doc.autoTableHtmlToJson(document.getElementById('asset'));
+    doc.autoTable(res3.columns, res3.data, {
+        startY: doc.lastAutoTable.finalY + 50
+    });
+
+    var res4 = doc.autoTableHtmlToJson(document.getElementById('vehicle'));
+    doc.autoTable(res4.columns, res4.data, {
+        startY: doc.lastAutoTable.finalY + 50
+    });
+    doc.save("test.pdf");
+  }
 }
-
-
-
