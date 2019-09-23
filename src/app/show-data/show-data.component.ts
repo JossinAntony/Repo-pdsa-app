@@ -56,93 +56,65 @@ export class ShowDataComponent implements OnInit {
 
 
 
-  // captureScreen() {
-  //   var htmlWidth = $('#toPdf').width();
-  //   var htmlHeight = $('#toPdf').height();
-  //   // var top_left_margin = 15;
-  //   var top_left_margin = 100;
-  //   var PDF_Width = htmlWidth + (top_left_margin * 2);
-  //   var PDF_Height = (PDF_Width * 1.5) + (top_left_margin * 2);
-  //   // var PDF_Height = (PDF_Width*1.5)+(top_left_margin*2);
-  //   var PDF_Height = (PDF_Width * 1) + (top_left_margin * 1);
-  //   var canvas_image_width = htmlWidth;
-  //   var canvas_image_height = htmlHeight;
-
-  //   var totalPDFPages = Math.ceil(htmlHeight / PDF_Height) - 1;
 
 
-  //   html2canvas($('#toPdf')[0], { allowTaint: true }).then(function (canvas) {
-  //     canvas.getContext('2d');
+  printPdf() {
+    // loop first table
+    $('#ident tr').each(function() {
+      // get the name
+      var name = $(this).find('td:first').text(),
+        // search the name in the second table
+        tbl2row = $("#second td").filter(function () {
+          return $(this).text() == name;
+        }).closest("tr");
 
-  //     console.log(canvas.height + '  ' + canvas.width);
+      // if the name doesn't exist in the second table
+      if (tbl2row.length == 0) {
+        // clone the row and add it to the result table
+        $(this).clone().appendTo('.result');
+      }
+    });
+
+    // loop the second table
+    $('#casuality tr').each(function () {
+      var name = $(this).find('td:first').text(),
+        resRow = $(".result td").filter(function () {
+          return $(this).text() == name;
+        }).closest("tr");
+
+      $(this).clone().appendTo('.result');
+    });
+
+    // loop the third table
+    $('#asset tr').each(function () {
+      var name = $(this).find('td:first').text(),
+        resRow = $(".result td").filter(function () {
+          return $(this).text() == name;
+        }).closest("tr");
+
+      $(this).clone().appendTo('.result');
+    });
+
+    // loop the fourth table
+    $('#vehicle tr').each(function () {
+      var name = $(this).find('td:first').text(),
+        resRow = $(".result td").filter(function () {
+          return $(this).text() == name;
+        }).closest("tr");
+
+      $(this).clone().appendTo('.result');
+    });
 
 
-  //     var imgData = canvas.toDataURL('image/jpeg', 1.0);
-  //     var pdf = new jspdf('p', 'pt', [PDF_Width, PDF_Height]);
+    // loop the fifth table
+    $('#comments tr').each(function () {
+      var name = $(this).find('td:first').text(),
+        resRow = $(".result td").filter(function () {
+          return $(this).text() == name;
+        }).closest("tr");
 
-  //     pdf.addImage(imgData, 'JPG', top_left_margin, top_left_margin, canvas_image_width, canvas_image_height);
+      $(this).clone().appendTo('.result');
 
-
-  //     for (var i = 1; i <= totalPDFPages; i++) {
-  //       pdf.addPage(PDF_Width, PDF_Height);
-  //       //pdf.addImage(imgData, 'JPG', top_left_margin, -(PDF_Height * i) + (top_left_margin * 4), canvas_image_width, canvas_image_height);
-  //     }
-
-  //     pdf.save('Report.pdf');
-  //   });
-  // }
-
-  captureScreen() {
-  var pdf = new jspdf('p','pt','a4');
-pdf.addHTML($("#first").get(0),function() {
-    pdf.save('web.pdf');
-});
-  }
-
-  merge(){
-    $(function() {
-      // loop first table
-      $('#first tr').each( function() {
-        // get the name
-        var name = $(this).find('td:first').text(),
-            // search the name in the second table
-            tbl2row = $("#second td").filter(function() {
-              return $(this).text() == name;
-            }).closest("tr");
-
-        // if the name doesn't exist in the second table
-        if( tbl2row.length == 0 ) {
-          // clone the row and add it to the result table
-          $(this).clone().appendTo('.result');
-        }
-        // the row exists in the second table
-        else {
-          // clone the row
-          var clone = $(this).clone();
-          // loop the cells, get the values and add the sum to the clone
-          clone.find('td:not(:first)').each( function() {
-            var i = $(this).index(),
-                num = parseFloat($(this).text()),
-                num2 = parseFloat(tbl2row.find('td:eq('+i+')').text());
-            $(this).text( num+num2);
-          });
-          // add the clone to the new table
-          clone.appendTo('.result');
-        }
-      });
-
-      // loop the second table
-      $('#second tr').each( function() {
-        var name = $(this).find('td:first').text(),
-            resRow = $(".result td").filter(function() {
-              return $(this).text() == name;
-            }).closest("tr");
-
-        // if the name doesn't exist, add the row
-        if( resRow.length == 0 ) {
-          $(this).clone().appendTo('.result');
-        }
-      });
     });
   }
 }

@@ -58,7 +58,7 @@
         <br><br>
         <!-- <h1 class="text-center">Search Results</h1> -->
         <br><br>
-        <table class="table table-striped table-light toPdf merge" id="first">
+        <table class="table table-striped table-light toPdf merge" id="ident">
           <thead class="table-dark">
             <!--bg-primary, success, warning, danger, info-->
             <tr>
@@ -138,7 +138,7 @@
             <div class="col col-12 col-sm-12">
               <h5 class="text-center">Casualities</h5>
               <br>
-              <table class="table table-striped table-light toPdf merge" id="second">
+              <table class="table table-striped table-light toPdf merge" id="casuality">
                 <thead class="table-dark">
                   <tr>
                     <th>Casuality</th>
@@ -168,7 +168,7 @@
             <div class="col col-12 col-sm-12">
               <h5 class="text-center">Assets</h5>
               <br>
-              <table class="table table-striped table-light toPdf">
+              <table class="table table-striped table-light" id="asset">
                 <thead class="table-dark">
                   <tr>
                     <th>Assets</th>
@@ -198,7 +198,7 @@
             <div class="col col-12 col-sm-12">
               <h5 class="text-center">Vehicles</h5>
               <br>
-              <table class="table table-striped table-light toPdf">
+              <table class="table table-striped table-light toPdf" id='vehicle'>
                 <thead class="table-dark">
                   <tr>
                     <th>Vehicles</th>
@@ -232,7 +232,7 @@
             <div class="col col-12 col-sm-12">
               <!-- <h5 class="text-center">Comments</h5> -->
               <br>
-              <table class="table table-striped table-light toPdf">
+              <table class="table table-striped table-light toPdf" id='comments'>
                 <thead class="table-dark">
                   <tr>
                     <th>Comments</th>
@@ -253,15 +253,14 @@
 
 
 
-              <td><button class="btn btn-info" (click)="captureScreen()">print</button></td>
-              <td><button class="btn btn-info" (click)="merge()">Merge tables</button></td>
+              <td><button class="btn btn-info" (click)="printPdf()">print</button></td>
             </div>
           </div>
         </div>
         <br><br><br>
       </div>
       <div class="col col-12 col-sm-2"></div>
-      <table class="result" style="display:none" id="toPdf">
+      <table class="result" style="" id="toPdf">
         </table>
     </div>
   </div>
