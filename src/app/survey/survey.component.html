@@ -181,7 +181,7 @@
             <!-- Add Children-->
             <div class="group-gap">
               <ng-container *ngFor="
-                  let item of surveyForm.controls['casualities'].controls;
+                  let item of surveyForm.controls['casualities']['controls'];
                   let i = index
                 ">
                 <div [formGroup]="item">
@@ -256,7 +256,7 @@
             <!-- Add Children-->
             <div class="group-gap">
               <ng-container *ngFor="
-                    let item of surveyForm.controls['assets'].controls;
+                    let item of surveyForm.controls['assets']['controls'];
                     let i = index
                   ">
                 <div [formGroup]="item">
@@ -343,7 +343,7 @@
             <!-- Add Children-->
             <div class="group-gap">
               <ng-container *ngFor="
-                      let item of surveyForm.controls['vehicles'].controls;
+                      let item of surveyForm.controls['vehicles']['controls'];
                       let i = index
                     ">
                 <div [formGroup]="item">
