@@ -10,7 +10,7 @@ export class ShowStatisticsComponent implements OnInit {
 
   constructor(private apiservice: ApiService) { }
 
-  title = 'Population (in millions)';
+  title = 'No. of Casualities';
   type = 'ColumnChart';
   data = [
     ["2012", 900, 390, 180],
@@ -20,16 +20,18 @@ export class ShowStatisticsComponent implements OnInit {
     ["2015", 1250, 480, 180],
     ["2016", 1530, 540, 180]
   ];
-  columnNames = ['Disaster code', 'Deceased', 'Injured', 'Missing'];
+  columnNames = ['Disaster code', 'Injured', 'Deceased',  'Missing'];
   options = {};
   width = 550;
-  height = 400;
+  height = 200;
 
   Data: any;
   arraylength: any;
   arr = [];
-  data1 = [];
+  dataCasualities = [];
   dCount = 0;
+  iCount = 0;
+  mCount = 0;
 
   ngOnInit() {
     this.apiservice.retrievePeople().subscribe((response: Array<object>) => {
@@ -45,22 +47,33 @@ export class ShowStatisticsComponent implements OnInit {
 
         for (let entry of disasterCodes) {
           this.dCount = 0;
+          this.iCount = 0;
+          this.mCount = 0;
+
           let arr = [];
           arr.push(entry);
           for (let i = 0; i < this.arraylength; i++) {
              if (this.Data[i].dcode === entry) {
                for (let j = 0; j < this.Data[i].casualities.length; j++) {
-               // console.log(this.Data[i].casualities);
                  if (this.Data[i].casualities[j].casStatus === 'deceased') {
                    this.dCount = this.dCount + 1;
                  }
+                 if (this.Data[i].casualities[j].casStatus === 'injured') {
+                  this.iCount = this.iCount + 1;
+                }
+                if (this.Data[i].casualities[j].casStatus === 'missing') {
+                  this.mCount = this.mCount + 1;
+                }
                }
              }
           }
-          arr.push(this.dCount);
-          this.data1.push(arr);
+           arr.push(this.iCount);
+           arr.push(this.dCount);
+          arr.push(this.mCount);
+
+          this.dataCasualities.push(arr);
         }
-        console.log(this.data1);
+        console.log(this.dataCasualities);
 
 
       } else {
