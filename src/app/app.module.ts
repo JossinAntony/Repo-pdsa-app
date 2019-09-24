@@ -48,8 +48,8 @@ const appRoutes: Routes = [
         component: ShowStatisticsComponent
       },
       {
-        path: 'dashboard',
-        component: DashboardComponent
+        path: 'compensation',
+        component: CompensationComponent
       }
     ],
   },

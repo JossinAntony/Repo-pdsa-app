@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-compensation',
@@ -10,6 +11,10 @@ export class CompensationComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
+  }
+
+  onSubmit(data: NgForm) {
+    console.log(data.value);
   }
 
 }

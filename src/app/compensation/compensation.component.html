@@ -1,1 +1,44 @@
-<p>compensation works!</p>
+<mat-card>
+  <div class="container">
+    <br /><br />
+    <div class="row">
+
+      <div class="col col-12 col-sm-12 border border-secondary rounded">
+        <br />
+        <h5 class="text-center">Compensation calculation: <span><em>please set the amount in rupees for the fields given</em></span> </h5>
+        <br />
+        <form (ngSubmit)= onSubmit(f) #f="ngForm">
+          <table class="table table-borderless">
+            <tr>
+              <td>
+                <p>Compensation-Person deceased:</p>
+              </td>
+              <td> <input type="text" class="form-control" name="cDeceased" ngModel> </td>
+            </tr>
+
+              <td>
+                <p>Compensation-Person injured:</p>
+              </td>
+              <td> <input type="text" class="form-control" name="cInjured" ngModel> </td>
+
+
+              <td>
+                <p>Compensation per sq.feet-assets damaged (total):</p>
+              </td>
+              <td> <input type="text" class="form-control" name="cAssets" ngModel> </td>
+
+              <tr>
+                <p>Person name</p>
+                <td> <input type="text" class="form-control" name="cPerson" ngModel> </td>
+            </tr>
+
+              <tr>
+                <td> <button class="btn btn-info" type="submit" ngSubmit>SUBMIT</button></td>
+            </tr>
+
+          </table>
+        </form>
+      </div>
+    </div>
+  </div>
+</mat-card>
