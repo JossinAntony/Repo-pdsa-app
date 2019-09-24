@@ -24,6 +24,7 @@ import { FirstComponent } from './first/first.component';
 import { SecondComponent } from './second/second.component';
 import { ShowDataComponent } from './show-data/show-data.component';
 import { ShowStatisticsComponent } from './show-statistics/show-statistics.component';
+import { CompensationComponent } from './compensation/compensation.component';
 
 const appRoutes: Routes = [
   {
@@ -83,7 +84,8 @@ const appRoutes: Routes = [
     FirstComponent,
     SecondComponent,
     ShowDataComponent,
-    ShowStatisticsComponent
+    ShowStatisticsComponent,
+    CompensationComponent
   ],
   imports: [
     BrowserModule,
