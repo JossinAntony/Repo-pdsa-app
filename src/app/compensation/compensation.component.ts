@@ -2,6 +2,15 @@ import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { ApiService } from '../api.service';
 
+import * as jspdf from 'jspdf';
+import html2canvas from 'html2canvas';
+import * as $ from 'jquery';
+
+// import jsPDF from 'jspdf';
+import 'jspdf-autotable';
+
+declare var jsPDF: any;
+
 @Component({
   selector: 'app-compensation',
   templateUrl: './compensation.component.html',
@@ -81,13 +90,31 @@ export class CompensationComponent implements OnInit {
         this.status = true;
         this.total = this.amtDeceased + this.amtInjured + this.amtAssets;
 
-        console.log(this.amtDeceased, this.amtInjured, this.amtAssets);
+        //console.log(this.amtDeceased, this.amtInjured, this.amtAssets);
 
       } else {
         alert('No matching entires found!');
 
       }
     });
+  }
+
+  downloadPDF() {
+    var doc = new jsPDF('p', 'pt', 'A4');
+
+    var header = function (data) {
+      doc.setFontSize(18);
+      doc.setTextColor(40);
+      doc.setFontStyle('normal');
+      //doc.addImage(headerImgData, 'JPEG', data.settings.margin.left, 20, 50, 50);
+      doc.text("Compensation Report", data.settings.margin.left, 50);
+  };
+
+    var res = doc.autoTableHtmlToJson(document.getElementById('table'));
+    doc.autoTable(res.columns, res.data,  {margin: {top: 80}, beforePageContent: header});
+
+
+    doc.save("Compensation report.pdf");
   }
 
 }
