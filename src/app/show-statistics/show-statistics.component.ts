@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ApiService } from '../api.service';
 
 @Component({
   selector: 'app-show-statistics',
@@ -7,27 +8,65 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ShowStatisticsComponent implements OnInit {
 
-  constructor() { }
+  constructor(private apiservice: ApiService) { }
 
-  title = 'Browser market shares at a specific website, 2014';
-   type = 'PieChart';
-   data = [
-      ['Firefox', 45.0],
-      ['IE', 26.8],
-      ['Chrome', 12.8],
-      ['Safari', 8.5],
-      ['Opera', 6.2],
-      ['Others', 0.7] 
-   ];
-   columnNames = ['Browser', 'Percentage'];
-   options = {
-   };
-   width = 550;
-   height = 400;
+  title = 'Population (in millions)';
+  type = 'ColumnChart';
+  data = [
+    ["2012", 900, 390, 180],
+    ["2012", 900, 390, 180],
+    ["2013", 1000, 400, 180],
+    ["2014", 1170, 440, 180],
+    ["2015", 1250, 480, 180],
+    ["2016", 1530, 540, 180]
+  ];
+  columnNames = ['Disaster code', 'Deceased', 'Injured', 'Missing'];
+  options = {};
+  width = 550;
+  height = 400;
+
+  Data: any;
+  arraylength: any;
+  arr = [];
+  data1 = [];
+  dCount = 0;
 
   ngOnInit() {
+    this.apiservice.retrievePeople().subscribe((response: Array<object>) => {
+      if (response.length > 0) {
+        this.Data = response;
+        this.arraylength = response.length;
+
+        for (let i = 0; i < this.arraylength; i++) {
+          this.arr.push(this.Data[i].dcode);
+        }
+        const disasterCodes = new Set(this.arr);
+
+
+        for (let entry of disasterCodes) {
+          this.dCount = 0;
+          let arr = [];
+          arr.push(entry);
+          for (let i = 0; i < this.arraylength; i++) {
+             if (this.Data[i].dcode === entry) {
+               for (let j = 0; j < this.Data[i].casualities.length; j++) {
+               // console.log(this.Data[i].casualities);
+                 if (this.Data[i].casualities[j].casStatus === 'deceased') {
+                   this.dCount = this.dCount + 1;
+                 }
+               }
+             }
+          }
+          arr.push(this.dCount);
+          this.data1.push(arr);
+        }
+        console.log(this.data1);
+
+
+      } else {
+        alert('No entires found!');
+      }
+    });
   }
-
-
-
 }
+
