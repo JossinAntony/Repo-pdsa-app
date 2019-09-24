@@ -23,6 +23,7 @@ import { SidenavComponent } from './sidenav/sidenav.component';
 import { FirstComponent } from './first/first.component';
 import { SecondComponent } from './second/second.component';
 import { ShowDataComponent } from './show-data/show-data.component';
+import { ShowStatisticsComponent } from './show-statistics/show-statistics.component';
 
 const appRoutes: Routes = [
   {
@@ -34,12 +35,16 @@ const appRoutes: Routes = [
     component: AdminPanelComponent,
     children: [
       {
+        path: '',
+        component: ShowDataComponent
+      },
+      {
         path: 'showData',
         component: ShowDataComponent
       },
       {
-        path: 'second',
-        component: SecondComponent
+        path: 'showStatistics',
+        component: ShowStatisticsComponent
       },
       {
         path: 'dashboard',
@@ -77,7 +82,8 @@ const appRoutes: Routes = [
     SidenavComponent,
     FirstComponent,
     SecondComponent,
-    ShowDataComponent
+    ShowDataComponent,
+    ShowStatisticsComponent
   ],
   imports: [
     BrowserModule,
