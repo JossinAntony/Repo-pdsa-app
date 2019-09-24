@@ -1,12 +1,14 @@
 <div class="container">
   <div class="row">
-    <div class="col col-12 col-sm-6">
-      <google-chart #chart [title]="title" [type]="type" [data]="dataCasualities" [columnNames]="columnNames" [options]="options"
+    <div class="col col-12 col-sm-12">
+      <br><br>
+      <google-chart #chart [title]="titleCasualities" [type]="type" [data]="dataCasualities" [columnNames]="columnNamesCasualities" [options]="options"
         [width]="width" [height]="height">
       </google-chart>
     </div>
-    <div class="col col-12 col-sm-6">
-      <google-chart #chart [title]="title" [type]="type" [data]="data" [columnNames]="columnNames" [options]="options"
+    <div class="col col-12 col-sm-12">
+      <br><br>
+      <google-chart #chart [title]="titleAssets" [type]="type" [data]="dataAssets" [columnNames]="columnNamesAssets" [options]="options"
         [width]="width" [height]="height">
       </google-chart>
     </div>

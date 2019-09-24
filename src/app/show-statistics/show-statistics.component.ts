@@ -10,7 +10,8 @@ export class ShowStatisticsComponent implements OnInit {
 
   constructor(private apiservice: ApiService) { }
 
-  title = 'No. of Casualities';
+  titleCasualities = 'No. of Casualities';
+  titleAssets = 'Damage to Assets';
   type = 'ColumnChart';
   data = [
     ["2012", 900, 390, 180],
@@ -20,18 +21,25 @@ export class ShowStatisticsComponent implements OnInit {
     ["2015", 1250, 480, 180],
     ["2016", 1530, 540, 180]
   ];
-  columnNames = ['Disaster code', 'Injured', 'Deceased',  'Missing'];
+  columnNamesCasualities = ['Disaster code', 'Injured', 'Deceased', 'Missing'];
+  columnNamesAssets = ['Disaster code', 'Mild', 'Total'];
+
   options = {};
-  width = 550;
-  height = 200;
+  width = 1000;
+  height = 250;
 
   Data: any;
   arraylength: any;
   arr = [];
   dataCasualities = [];
+  dataAssets = [];
+
   dCount = 0;
   iCount = 0;
   mCount = 0;
+
+  amCount = 0;
+  atCount = 0;
 
   ngOnInit() {
     this.apiservice.retrievePeople().subscribe((response: Array<object>) => {
@@ -44,7 +52,7 @@ export class ShowStatisticsComponent implements OnInit {
         }
         const disasterCodes = new Set(this.arr);
 
-
+        // -------------data extraction-casualities-----------
         for (let entry of disasterCodes) {
           this.dCount = 0;
           this.iCount = 0;
@@ -53,27 +61,69 @@ export class ShowStatisticsComponent implements OnInit {
           let arr = [];
           arr.push(entry);
           for (let i = 0; i < this.arraylength; i++) {
-             if (this.Data[i].dcode === entry) {
-               for (let j = 0; j < this.Data[i].casualities.length; j++) {
-                 if (this.Data[i].casualities[j].casStatus === 'deceased') {
-                   this.dCount = this.dCount + 1;
-                 }
-                 if (this.Data[i].casualities[j].casStatus === 'injured') {
+            if (this.Data[i].dcode === entry) {
+              for (let j = 0; j < this.Data[i].casualities.length; j++) {
+                if (this.Data[i].casualities[j].casStatus === 'deceased') {
+                  this.dCount = this.dCount + 1;
+                }
+                if (this.Data[i].casualities[j].casStatus === 'injured') {
                   this.iCount = this.iCount + 1;
                 }
                 if (this.Data[i].casualities[j].casStatus === 'missing') {
                   this.mCount = this.mCount + 1;
                 }
-               }
-             }
+              }
+            }
           }
-           arr.push(this.iCount);
-           arr.push(this.dCount);
+          arr.push(this.iCount);
+          arr.push(this.dCount);
           arr.push(this.mCount);
 
           this.dataCasualities.push(arr);
         }
-        console.log(this.dataCasualities);
+        // --------------------------------------------------------------------------
+
+
+
+
+
+        // -------------data extraction-assets-----------
+        for (let entry of disasterCodes) {
+          this.amCount = 0;
+          this.atCount = 0;
+
+
+          let arr = [];
+          arr.push(entry);
+          for (let i = 0; i < this.arraylength; i++) {
+            if (this.Data[i].dcode === entry) {
+              for (let j = 0; j < this.Data[i].assets.length; j++) {
+                if (this.Data[i].assets[j].astStatus === 'mild') {
+                  this.amCount = this.amCount + 1;
+                }
+                if (this.Data[i].assets[j].astStatus === 'total') {
+                  this.atCount = this.atCount + 1;
+                }
+              }
+            }
+          }
+          arr.push(this.amCount);
+          arr.push(this.atCount);
+
+          this.dataAssets.push(arr);
+        }
+        // --------------------------------------------------------------------------
+
+
+        console.log(this.dataAssets);
+
+
+
+
+
+
+
+
 
 
       } else {
