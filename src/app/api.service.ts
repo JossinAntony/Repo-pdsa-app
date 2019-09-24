@@ -19,4 +19,8 @@ export class ApiService {
   retrievePersonByName(data) {
     return this.http.post('http://localhost:3052/retrievePersonByNameAPI', data);
   }
+
+  deletePersonById(data) {
+    return this.http.post('http://localhost:3052/deletePersonAPI', data);
+  }
 }

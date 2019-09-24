@@ -8,6 +8,8 @@ import * as $ from 'jquery';
 
 //import jsPDF from 'jspdf';
 import 'jspdf-autotable';
+import { Message } from '../message.model';
+import { Router } from '@angular/router';
 
 declare var jsPDF: any;
 
@@ -30,7 +32,7 @@ export class ShowDataComponent implements OnInit {
     left: 40,
     width: 522
   };
-  constructor(private apiservice: ApiService) { }
+  constructor(private apiservice: ApiService, private router: Router) { }
 
   ngOnInit() {
     this.personFound = false;
@@ -86,4 +88,17 @@ export class ShowDataComponent implements OnInit {
     });
     doc.save("Survey report.pdf");
   }
+
+  delete() {
+    this.apiservice.deletePersonById (this.showPerson).subscribe((response: Message) => {
+      if (response.message === "success") {
+        alert('File deleted!');
+        // this.router.navigateByUrl('/adminPanel/');
+      } else {
+        alert('Delete unsuccessful, please try again!');
+      }
+    });
+
+  }
 }
+
