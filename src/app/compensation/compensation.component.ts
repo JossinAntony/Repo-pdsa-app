@@ -14,6 +14,8 @@ export class CompensationComponent implements OnInit {
   iCount = 0;
   aCount = 0;
   aArea = 0;
+  name: any;
+  dCode: any;
 
 
   amtDeceased = 0;
@@ -23,11 +25,16 @@ export class CompensationComponent implements OnInit {
   cDeceased = 0;
   cInjured = 0;
   cAssets = 0;
+  total = 0;
+  status = false;
 
 
   constructor(private apiservice: ApiService) { }
 
   ngOnInit() {
+    this.status = false;
+    this.name = '';
+    this.dCode = '';
   }
 
   onSubmit(data: NgForm) {
@@ -38,6 +45,7 @@ export class CompensationComponent implements OnInit {
         this.iCount = 0;
         this.aCount = 0;
         this.aArea = 0;
+        this.total = 0;
 
         this.amtDeceased = 0;
         this.amtInjured = 0;
@@ -47,6 +55,8 @@ export class CompensationComponent implements OnInit {
         this.cDeceased = data.value.cDeceased;
         this.cInjured = data.value.cInjured;
         this.cAssets = data.value.cAssets;
+        this.name = data.value.pname;
+        this.dCode = this.person.dcode;
 // -----------Data extraction from person-----------------
         for (let i = 0; i < this.person.casualities.length; i++) {
           if (this.person.casualities[i].casStatus === 'deceased') {
@@ -68,6 +78,8 @@ export class CompensationComponent implements OnInit {
         this.amtInjured = this.cInjured * this.iCount;
         this.amtAssets= this.cAssets * this.aArea;
 
+        this.status = true;
+        this.total = this.amtDeceased + this.amtInjured + this.amtAssets;
 
         console.log(this.amtDeceased, this.amtInjured, this.amtAssets);
 
