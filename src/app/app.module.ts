@@ -25,6 +25,7 @@ import { SecondComponent } from './second/second.component';
 import { ShowDataComponent } from './show-data/show-data.component';
 import { ShowStatisticsComponent } from './show-statistics/show-statistics.component';
 import { CompensationComponent } from './compensation/compensation.component';
+import { LoginComponent } from './login/login.component';
 
 const appRoutes: Routes = [
   {
@@ -58,13 +59,17 @@ const appRoutes: Routes = [
     component: DashboardComponent
   },
   {
+    path: 'login',
+    component: LoginComponent
+},
+  {
     path: '',
-    redirectTo: '/survey',
+    redirectTo: '/login',
     pathMatch: 'full'
 },
 {
     path: '**',
-    redirectTo: '/survey',
+    redirectTo: '/login',
     pathMatch: 'full'
 },
 
@@ -85,7 +90,8 @@ const appRoutes: Routes = [
     SecondComponent,
     ShowDataComponent,
     ShowStatisticsComponent,
-    CompensationComponent
+    CompensationComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,

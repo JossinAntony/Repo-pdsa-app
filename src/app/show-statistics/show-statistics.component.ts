@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiService } from '../api.service';
 import {MatButton} from '@angular/material';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-show-statistics',
@@ -9,7 +10,7 @@ import {MatButton} from '@angular/material';
 })
 export class ShowStatisticsComponent implements OnInit {
 
-  constructor(private apiservice: ApiService) { }
+  constructor(private apiservice: ApiService, private router: Router) { }
 
   titleCasualities = 'No. of Casualities';
   titleAssets = 'Damage to Assets';
@@ -46,6 +47,15 @@ export class ShowStatisticsComponent implements OnInit {
   status = false;
 
   ngOnInit() {
+
+    status=localStorage.getItem('logStatus');
+    if(status != ("admin")){
+      this.router.navigateByUrl('');
+    }
+
+
+
+
     this.status = false;
     this.apiservice.retrievePeople().subscribe((response: Array<object>) => {
       if (response.length > 0) {

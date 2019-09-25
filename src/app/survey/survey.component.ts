@@ -26,6 +26,13 @@ export class SurveyComponent implements OnInit {
 
 
   ngOnInit() {
+
+    status=localStorage.getItem('logStatus');
+    if(!((status == "admin") || (status == 'user'))){
+      this.router.navigateByUrl('');
+      localStorage.setItem('logStatus','revoked');
+    }
+
     this.surveyForm = this.fb.group({
       sname: [''],
       sdesig: [''],

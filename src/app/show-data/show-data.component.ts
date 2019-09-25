@@ -37,6 +37,11 @@ export class ShowDataComponent implements OnInit {
   ngOnInit() {
     this.personFound = false;
     this.personDisplay = false;
+
+    status=localStorage.getItem('logStatus');
+    if(status != ("admin")){
+      this.router.navigateByUrl('');
+    }
   }
 
   onSubmit(data: NgForm) {

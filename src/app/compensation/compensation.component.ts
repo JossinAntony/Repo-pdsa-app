@@ -8,6 +8,7 @@ import * as $ from 'jquery';
 
 // import jsPDF from 'jspdf';
 import 'jspdf-autotable';
+import { Router } from '@angular/router';
 
 declare var jsPDF: any;
 
@@ -38,12 +39,16 @@ export class CompensationComponent implements OnInit {
   status = false;
 
 
-  constructor(private apiservice: ApiService) { }
+  constructor(private apiservice: ApiService, private router: Router) { }
 
   ngOnInit() {
     this.status = false;
     this.name = '';
     this.dCode = '';
+    status=localStorage.getItem('logStatus');
+    if(status != ("admin")){
+      this.router.navigateByUrl('');
+    }
   }
 
   onSubmit(data: NgForm) {

@@ -1,0 +1,28 @@
+<div class="container">
+  <br><br><br>
+  <div class="row">
+    <div class="col col-12 col-sm-2"></div>
+    <div class="col col-12 col-sm-8 border border-secondary rounded">
+      <br><br>
+      <h1 class='text-center'>Log In Form</h1>
+      <br>
+      <div class="login-form">
+        <form id="login-profile" (ngSubmit)=onSubmit(f) #f='ngForm'>
+          <!-- <h2 class="text-center">Log in</h2> -->
+          <div class="form-group">
+            <input id="uname" name="uname" type="text" class="form-control" placeholder="Username is admin"
+              required="required" ngModel>
+          </div>
+          <div class="form-group">
+            <input id="upass" name="upass" type="password" class="form-control" placeholder="Password is 12345"
+              required="required" ngModel>
+          </div>
+          <div class="form-group">
+            <button type="submit" class="btn btn-primary btn-block" ngSubmit>Log in</button>
+          </div>
+        </form>
+        <!-- <a href="/signup">New member? Signup here</a> -->
+      </div>
+    </div>
+  </div>
+</div>

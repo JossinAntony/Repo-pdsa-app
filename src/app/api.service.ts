@@ -27,4 +27,9 @@ export class ApiService {
     // return this.http.post('http://localhost:3052/deletePersonAPI', data);
     return this.http.post('https://pdsa-apis.herokuapp.com/deletePersonAPI', data);
   }
+
+  checkLogIn(data){
+   // return this.http.get('http://localhost:3052/searchLogInCredentialsAPI/?username=' + data.uname + '&pwd=' + data.upass);
+    return this.http.get('https://pdsa-apis.herokuapp.com/searchLogInCredentialsAPI/?username=' + data.uname + '&pwd=' + data.upass);
+  }
 }
